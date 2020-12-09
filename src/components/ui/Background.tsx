@@ -1,35 +1,17 @@
-import React from 'react';
-import styled, { keyframes } from 'styled-components/macro';
-import { pxToRem } from 'helpers/generic';
-
-const animate = keyframes`
-  0%{
-      transform: translateY(0) rotate(0deg);
-      opacity: 0.8;
-      border-radius: 0;
-  }
-
-  100%{
-      transform: translateY(-1000px) rotate(720deg);
-      opacity: 0;
-      border-radius: 50%;
-  }`;
+import React, { useEffect, useState } from 'react';
+import styled from 'styled-components/macro';
+import { pxToRem, randomNumber } from 'helpers/generic';
+import { animateUp } from 'helpers/animations';
 
 const StyledContainer = styled.div`
   position: absolute;
   overflow: hidden;
+  z-index: -1;
   bottom: 0;
   top: 0;
   right: 0;
   left: 0;
-  background-image: linear-gradient(
-    to right top,
-    #051937,
-    #004d7a,
-    #008793,
-    #00bf72,
-    #a8eb12
-  );
+  background-image: ${(props) => props.theme.colors.bgGradient};
 `;
 interface BgElementProps {
   size: string;
@@ -46,42 +28,48 @@ const BgElement = styled.div<BgElementProps>`
   background: ${(props) => props.color};
   left: ${(props) => props.position};
   bottom: ${pxToRem(-100)};
-  animation: ${animate} 25s linear infinite;
+  animation: ${animateUp} 25s linear infinite;
   animation-delay: ${(props) => props.delay};
   animation-duration: ${(props) => props.duration};
 `;
 
 const Background = () => {
-  const bgElements: BgElementProps[] = [
-    {
-      size: pxToRem(20),
+  const numberOfElements = 12;
+  const [bgElements, setBgElements] = useState<BgElementProps[]>([]);
+
+  const createBgEl = (index: number) => {
+    // Divide elements along the screen according to index
+    const positionRange: { min: number; max: number } = {
+      min:
+        index < numberOfElements / 3
+          ? 0
+          : index <= numberOfElements / 2
+          ? 33
+          : 66,
+      max:
+        index < numberOfElements / 3
+          ? 33
+          : index <= numberOfElements / 2
+          ? 66
+          : 100,
+    };
+
+    return {
+      size: pxToRem(randomNumber(100, 20)),
       color: '#004d7a',
-      position: '80%',
-      delay: '2s',
-      duration: '15s',
-    },
-    {
-      size: pxToRem(40),
-      color: '#00bf72',
-      position: '40%',
-      delay: '4s',
-      duration: '10s',
-    },
-    {
-      size: pxToRem(80),
-      color: '#31b37f',
-      position: '12%',
-      delay: '1s',
-      duration: '20s',
-    },
-    {
-      size: pxToRem(20),
-      color: '#095785',
-      position: '23%',
-      delay: '3s',
-      duration: '12s',
-    },
-  ];
+      position: `${randomNumber(positionRange.max, positionRange.min)}%`,
+      delay: `${randomNumber(10)}s`,
+      duration: `${randomNumber(30, 8)}s`,
+    };
+  };
+
+  // Create bg Elements
+  useEffect(() => {
+    for (let index = 0; index < numberOfElements; index++) {
+      setBgElements((bgElements) => [...bgElements, createBgEl(index)]);
+    }
+  }, []);
+
   return (
     <StyledContainer>
       {bgElements.map((item, index) => {

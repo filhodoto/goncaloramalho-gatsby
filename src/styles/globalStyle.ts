@@ -1,7 +1,13 @@
-import { createGlobalStyle } from "styled-components"
+import { createGlobalStyle } from 'styled-components';
+import { normalize } from 'styled-normalize';
 
 const GlobalStyle = createGlobalStyle`
-    html,
+  
+  
+  ${normalize};
+  
+  
+  html,
   body,
   div,
   span,
@@ -134,6 +140,10 @@ const GlobalStyle = createGlobalStyle`
     border-spacing: 0;
   }
 
-`
+  body,
+  html {
+    height: 100%;
+  }
+`;
 
-export default GlobalStyle
+export default GlobalStyle;
