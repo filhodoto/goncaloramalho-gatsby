@@ -23,11 +23,16 @@ const ContentContainer = styled.div`
   }
 `;
 
+const Header = styled.h1`
+  font-family: ${(props) => props.theme.fonts.headingFont};
+  color: purple;
+`;
+
 const Main = () => {
   return (
     <MainContainer>
       <ContentContainer>
-        <h1>My name</h1>
+        <Header>My name</Header>
         <p>
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Enim, quam
           eos? Culpa, dolorum! Dolorem, commodi eveniet deserunt maxime nulla

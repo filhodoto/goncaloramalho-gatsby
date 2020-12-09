@@ -4,8 +4,8 @@ import { BaseTheme } from './themes';
 // Define baseTheme for definitions that will be shared between themes
 export const baseTheme: BaseTheme = {
   fonts: {
-    bodyFont: 'Abel',
-    headingFont: 'Nunito',
+    bodyFont: 'Source Sans Pro',
+    headingFont: 'Montserrat',
   },
 };
 
