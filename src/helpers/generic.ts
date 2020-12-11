@@ -5,5 +5,5 @@ export const arrayNotEmpty = (arr: any[]): boolean =>
 
 export const pxToRem = (x: number): string => `${x / 16}rem`;
 
-export const randomNumber = (max: number, min: number = 0): number =>
+export const randomNumber = (max: number, min = 0): number =>
   Math.round(Math.random() * (max - min) + min);

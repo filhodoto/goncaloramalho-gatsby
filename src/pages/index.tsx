@@ -5,9 +5,9 @@ import GlobalStyle from 'styles/globalStyle';
 import { ThemeProvider } from 'styled-components';
 import { themeController } from 'theme/theme';
 
-export default function Home() {
+export default function Home(): JSX.Element {
   return (
-    <ThemeProvider theme={themeController['light']}>
+    <ThemeProvider theme={themeController['light']!}>
       <GlobalStyle />
       <Main />
       <Background />

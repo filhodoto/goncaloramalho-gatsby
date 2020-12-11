@@ -1,4 +1,4 @@
-import { CSSObject, CSSProp, DefaultTheme } from 'styled-components/macro';
+import { CSSObject, CSSProp } from 'styled-components/macro';
 
 // Fix for Typescript issue with css prop
 declare module 'react' {
@@ -14,7 +14,7 @@ export interface BaseTheme {
   };
 }
 
-// Add style declarartions to 'styled-components/macro' DefaultTheme
+// Add style declaratuib to 'styled-components/macro' DefaultTheme
 declare module 'styled-components/macro' {
   export interface DefaultTheme {
     colors: {

@@ -33,7 +33,7 @@ const BgElement = styled.div<BgElementProps>`
   animation-duration: ${(props) => props.duration};
 `;
 
-const Background = () => {
+const Background = (): JSX.Element => {
   const numberOfElements = 12;
   const [bgElements, setBgElements] = useState<BgElementProps[]>([]);
 
