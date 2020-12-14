@@ -148,13 +148,15 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
+    * {
+      box-sizing: border-box;
+    }
     font-family: ${(props) =>
       props.theme.fonts
         .bodyFont}, -apple-system, BlinkMacSystemFont, 'sans-serif';
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-
 `;
 
 export default GlobalStyle;

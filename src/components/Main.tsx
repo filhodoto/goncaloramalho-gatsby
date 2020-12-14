@@ -8,10 +8,7 @@ import { AnimateOnChange } from 'react-animation';
 const MainContainer = styled.main`
   --padding: ${pxToRem(20)};
   display: grid;
-  padding: var(--padding);
-  min-height: calc(100vh - var(--padding) * 2);
-  align-items: center;
-  justify-content: center;
+  place-items: center;
 `;
 
 const ContentContainer = styled.div`
@@ -39,7 +36,7 @@ const Features = styled.span`
 const Main = (): JSX.Element => {
   const features: { feature: string; icon: string }[] = [
     { feature: 'Web enthusiast', icon: '' },
-    { feature: 'Traveller', icon: '' },
+    { feature: 'Backpacker', icon: '' },
     { feature: 'Beer drinker', icon: '' },
     { feature: 'Comics reader', icon: '' },
     { feature: 'Cheese addict', icon: '' },
@@ -53,11 +50,13 @@ const Main = (): JSX.Element => {
       query {
         site {
           siteMetadata {
+            email
             social {
-              codesandbox
-              github
               linkedin
+              github
+              codesandbox
               twitter
+              instagram
             }
           }
         }
@@ -97,13 +96,24 @@ const Main = (): JSX.Element => {
             <Features>{whatIam.feature}</Features>
           </AnimateOnChange>{' '}
           who likes to craft interesting and beautiful projecs for the web. To
-          know more about me please check out these links below you
+          know more about me take a look at links below or we can have an{' '}
+          {
+            <a
+              href={`mailto: ${site.siteMetadata.email}`}
+              aria-label='email link'
+            >
+              old fashion chat
+            </a>
+          }
+          .
         </p>
         <ul>
           {Object.entries(site.siteMetadata.social).map(([key, value]) => {
             return (
               <li key={key}>
-                {key}:{value}
+                <a href={`${value}`} target='_blank' rel='noreferrer'>
+                  {key}
+                </a>
               </li>
             );
           })}
