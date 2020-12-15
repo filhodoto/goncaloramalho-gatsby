@@ -17,7 +17,7 @@ const MainContainer = styled.div`
 
 export default function Home(): JSX.Element {
   return (
-    <ThemeProvider theme={themeController['light']!}>
+    <ThemeProvider theme={themeController['dark']!}>
       <GlobalStyle />
       <MainContainer>
         <Header />

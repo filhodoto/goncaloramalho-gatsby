@@ -156,6 +156,12 @@ const GlobalStyle = createGlobalStyle`
         .bodyFont}, -apple-system, BlinkMacSystemFont, 'sans-serif';
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    color:  ${(props) => props.theme.colors.primary}
+  }
+
+  a {
+    text-decoration: none;
+    color: ${(props) => props.theme.colors.action};
   }
 `;
 

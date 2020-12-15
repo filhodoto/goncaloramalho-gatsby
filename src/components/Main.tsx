@@ -1,19 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import { pxToRem } from 'helpers/generic';
-import { useStaticQuery, graphql } from 'gatsby';
 import styled from 'styled-components';
 import { up } from 'styled-breakpoints';
 import { AnimateOnChange } from 'react-animation';
+import SocialLinks from 'components/ui/SocialLinks';
+import { useSiteMetadata } from 'api/global';
 
 const MainContainer = styled.main`
-  --padding: ${pxToRem(20)};
+  text-align: center;
   display: grid;
   place-items: center;
+  font-size: ${pxToRem(24)};
+  letter-spacing: 0.05rem;
+  line-height: 1.8rem;
 `;
 
 const ContentContainer = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
 
   ${up('md')} {
     max-width: ${pxToRem(800)};
@@ -33,6 +38,16 @@ const Features = styled.span`
   color: ${(props) => props.theme.colors.primary};
 `;
 
+const Social = styled.div`
+  /* margin-top: ${pxToRem(20)}; */
+  display: flex;
+  /* flex-direction: column; */
+
+  ${up('sm')} {
+    flex-direction: row;
+  }
+`;
+
 const Main = (): JSX.Element => {
   const features: { feature: string; icon: string }[] = [
     { feature: 'Web enthusiast', icon: '' },
@@ -45,24 +60,7 @@ const Main = (): JSX.Element => {
   const [featuresCounter, setFeaturesCounter] = useState(0);
 
   //Note:: Using this as it's Gatsby standart but I'm not sure I like this approach for the future
-  const { site } = useStaticQuery(
-    graphql`
-      query {
-        site {
-          siteMetadata {
-            email
-            social {
-              linkedin
-              github
-              codesandbox
-              twitter
-              instagram
-            }
-          }
-        }
-      }
-    `
-  );
+  const { email, social } = useSiteMetadata();
 
   useEffect(() => {
     // Start features loop by incrementing featuresCounter
@@ -84,7 +82,7 @@ const Main = (): JSX.Element => {
   return (
     <MainContainer>
       <ContentContainer>
-        <p>Welcome!</p>
+        <p>Welcome to my humble abode</p>
         <Heading>My name is Gonçalo</Heading>
         <p>
           I’m a{' '}
@@ -98,26 +96,17 @@ const Main = (): JSX.Element => {
           who likes to craft interesting and beautiful projecs for the web. To
           know more about me take a look at links below or we can have an{' '}
           {
-            <a
-              href={`mailto: ${site.siteMetadata.email}`}
-              aria-label='email link'
-            >
+            <a href={`mailto: ${email}`} aria-label='email link'>
               old fashion chat
             </a>
           }
           .
         </p>
-        <ul>
-          {Object.entries(site.siteMetadata.social).map(([key, value]) => {
-            return (
-              <li key={key}>
-                <a href={`${value}`} target='_blank' rel='noreferrer'>
-                  {key}
-                </a>
-              </li>
-            );
+        <Social>
+          {Object.entries(social).map(([key, value]) => {
+            return <SocialLinks key={key} link={value} platform={key} />;
           })}
-        </ul>
+        </Social>
       </ContentContainer>
     </MainContainer>
   );
