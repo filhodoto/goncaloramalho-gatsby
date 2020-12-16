@@ -26,6 +26,14 @@ module.exports = {
     'gatsby-plugin-typescript',
     'gatsby-plugin-typescript-checker',
     {
+      resolve: 'gatsby-plugin-react-svg',
+      options: {
+        rule: {
+          include: /images/,
+        },
+      },
+    },
+    {
       resolve: 'gatsby-plugin-eslint',
       options: {
         test: /\.js$|\.jsx$|\.ts$|\.tsx$/,
@@ -47,6 +55,7 @@ module.exports = {
         styles: path.join(__dirname, 'src/styles'),
         theme: path.join(__dirname, 'src/theme'),
         api: path.join(__dirname, 'src/api'),
+        images: path.join(__dirname, 'src/images'),
       },
     },
   ],

@@ -156,7 +156,7 @@ const GlobalStyle = createGlobalStyle`
       props.theme.fonts.body}, -apple-system, BlinkMacSystemFont, 'sans-serif';
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    color:  ${(props) => props.theme.colors.primary}
+    color:  ${(props) => props.theme.colors.text}
   }
 
   a {

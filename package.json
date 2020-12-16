@@ -37,6 +37,7 @@
     "eslint-plugin-react": "^7.21.5",
     "eslint-plugin-react-hooks": "^4.2.0",
     "gatsby-plugin-eslint": "^2.0.8",
+    "gatsby-plugin-react-svg": "^3.0.0",
     "gatsby-plugin-root-import": "^2.0.5",
     "prettier": "2.1.2",
     "react-animation": "^1.2.2",

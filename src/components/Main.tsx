@@ -30,13 +30,11 @@ const Heading = styled.h1`
   line-height: 120%;
   margin-bottom: ${pxToRem(20)};
   font-size: 3rem;
-  color: ${(props) => props.theme.colors.primary};
 `;
 
 const Features = styled.span`
   font-family: ${(props) => props.theme.fonts.heading};
   font-size: 2rem;
-  color: ${(props) => props.theme.colors.primary};
 `;
 
 const Social = styled.div`
@@ -46,8 +44,8 @@ const Social = styled.div`
 
 const Main = (): JSX.Element => {
   const features: { feature: string; icon: string }[] = [
-    { feature: 'Web enthusiast', icon: '' },
-    { feature: 'Backpacker', icon: '' },
+    { feature: 'Web enthusiast', icon: 'beer' },
+    { feature: 'Backpacker', icon: 'plane' },
     { feature: 'Beer drinker', icon: '' },
     { feature: 'Comics reader', icon: '' },
     { feature: 'Cheese addict', icon: '' },
