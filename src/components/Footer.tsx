@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 import { getCurrentYear } from 'helpers/generic';
-import { graphql, useStaticQuery } from 'gatsby';
+import { useSiteMetadata } from 'api/global';
 
 const FooterStyled = styled.footer`
   display: grid;
@@ -10,23 +10,13 @@ const FooterStyled = styled.footer`
 `;
 
 const Footer = (): JSX.Element => {
-  const { site } = useStaticQuery(
-    graphql`
-      query {
-        site {
-          siteMetadata {
-            email
-          }
-        }
-      }
-    `
-  );
+  const { email } = useSiteMetadata();
 
   return (
     <FooterStyled>
       <p>
         &copy; Copyright {getCurrentYear()}{' '}
-        <a href={`mailto: ${site.siteMetadata.email}`} aria-label='email link'>
+        <a href={`mailto: ${email}`} aria-label='email link'>
           Gonçalo Ramalho
         </a>
       </p>
