@@ -4,10 +4,11 @@ import 'fontsource-source-sans-pro/400.css';
 import 'fontsource-montserrat/700.css'; // All styles included.
 
 const GlobalStyle = createGlobalStyle`
-  
+  :root {
+    --transitionDuration: 0.2s;
+  }
   
   ${normalize};
-  
   
   html,
   body,
@@ -161,7 +162,15 @@ const GlobalStyle = createGlobalStyle`
 
   a {
     text-decoration: none;
-    color: ${(props) => props.theme.colors.action};
+    color: ${(props) => props.theme.colors.link};
+    &:hover {
+      color: ${(props) => props.theme.colors.action};
+    }
+  }
+
+  a,
+  svg {
+    transition: all ease-in-out var(--transitionDuration);
   }
 `;
 

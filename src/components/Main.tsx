@@ -27,6 +27,7 @@ const ContentContainer = styled.div`
 
 const Heading = styled.h1`
   font-family: ${(props) => props.theme.fonts.headingFont};
+  line-height: 120%;
   margin-bottom: ${pxToRem(20)};
   font-size: 3rem;
   color: ${(props) => props.theme.colors.primary};
@@ -39,13 +40,8 @@ const Features = styled.span`
 `;
 
 const Social = styled.div`
-  /* margin-top: ${pxToRem(20)}; */
+  margin-top: ${pxToRem(50)};
   display: flex;
-  /* flex-direction: column; */
-
-  ${up('sm')} {
-    flex-direction: row;
-  }
 `;
 
 const Main = (): JSX.Element => {
@@ -82,8 +78,7 @@ const Main = (): JSX.Element => {
   return (
     <MainContainer>
       <ContentContainer>
-        <p>Welcome to my humble abode</p>
-        <Heading>My name is Gonçalo</Heading>
+        <Heading>Olá! I'm Gonçalo</Heading>
         <p>
           I’m a{' '}
           <AnimateOnChange
