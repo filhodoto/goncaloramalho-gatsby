@@ -19,6 +19,8 @@ const Link = styled.a`
 
 const Icon = styled(SvgIcon)`
   fill: ${(props) => props.theme.colors.link};
+  width: ${pxToRem(30)};
+  height: ${pxToRem(30)};
   &:hover {
     fill: ${(props) => props.theme.colors.action};
     transform: scale(1.2);
@@ -31,7 +33,7 @@ https://react-typescript-cheatsheet.netlify.app/docs/basic/getting-started/funct
 const SocialLinks = ({ link, platform }: SocialLinksProps): JSX.Element => {
   return (
     <Link href={link} target='_blank'>
-      <Icon platform={platform} size='30' />
+      <Icon platform={platform} />
     </Link>
   );
 };

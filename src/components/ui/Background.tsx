@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components/macro';
 import { pxToRem, randomNumber } from 'helpers/generic';
 import { animateUp } from 'helpers/animations';
+import BgShape from './BgShape';
 
 const StyledContainer = styled.div`
   position: fixed;
@@ -21,11 +22,11 @@ interface BgElementProps {
   duration: string;
 }
 
-const BgElement = styled.div<BgElementProps>`
+const BgElement = styled(BgShape)<BgElementProps>`
   position: absolute;
   width: ${(props) => props.size};
   height: ${(props) => props.size};
-  background: ${(props) => props.color};
+  /* background: ${(props) => props.color}; */
   left: ${(props) => props.position};
   bottom: ${pxToRem(-100)};
   animation: ${animateUp} 25s linear infinite;
@@ -37,6 +38,7 @@ const Background = (): JSX.Element => {
   const numberOfElements = 12;
   const [bgElements, setBgElements] = useState<BgElementProps[]>([]);
 
+  // Create object with css styles for each bg element created
   const createBgEl = (index: number) => {
     // Divide elements along the screen according to index
     const positionRange: { min: number; max: number } = {

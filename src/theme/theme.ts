@@ -4,8 +4,8 @@ import { BaseTheme } from './themes';
 // Define baseTheme for definitions that will be shared between themes
 export const baseTheme: BaseTheme = {
   fonts: {
-    bodyFont: 'Source Sans Pro',
-    headingFont: 'Montserrat',
+    body: 'Source Sans Pro',
+    heading: 'Montserrat',
   },
 };
 
@@ -35,7 +35,7 @@ export const darkTheme: DefaultTheme = {
     link: '#96C2C9',
     action: '#E9C46A',
   },
-  fonts: { ...lightTheme.fonts },
+  fonts: { ...baseTheme.fonts },
 };
 
 // Use Record so we can use typed maps and prevent error:

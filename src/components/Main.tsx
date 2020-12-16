@@ -26,7 +26,7 @@ const ContentContainer = styled.div`
 `;
 
 const Heading = styled.h1`
-  font-family: ${(props) => props.theme.fonts.headingFont};
+  font-family: ${(props) => props.theme.fonts.heading};
   line-height: 120%;
   margin-bottom: ${pxToRem(20)};
   font-size: 3rem;
@@ -34,7 +34,7 @@ const Heading = styled.h1`
 `;
 
 const Features = styled.span`
-  font-family: ${(props) => props.theme.fonts.headingFont};
+  font-family: ${(props) => props.theme.fonts.heading};
   font-size: 2rem;
   color: ${(props) => props.theme.colors.primary};
 `;
