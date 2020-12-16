@@ -4,6 +4,7 @@
  * See: https://www.gatsbyjs.com/docs/gatsby-config/
  */
 const path = require('path');
+
 module.exports = {
   /* Your site config here */
   siteMetadata: {
@@ -11,12 +12,13 @@ module.exports = {
     description:
       'Hello my name is Gonçalo Ramalho and I’m a web enthusiast who likes to craft interesting and beautiful projecs for the web.',
     author: '@filhodoto',
+    email: 'meet@goncaloramalho.com',
     siteUrl: 'http://www.goncaloramalho.com',
     social: {
-      github: 'githublink',
-      codesandbox: 'codesandbox_link',
-      twitter: '_goncalo',
-      linkedin: 'linkedinlink',
+      linkedin: 'https://www.linkedin.com/in/gtramalho',
+      github: 'https://github.com/filhodoto',
+      twitter: 'https://twitter.com/_goncalo',
+      instagram: 'https://instagram.com/goncalo_ramalho/',
     },
   },
   plugins: [
@@ -44,6 +46,7 @@ module.exports = {
         pages: path.join(__dirname, 'src/pages'),
         styles: path.join(__dirname, 'src/styles'),
         theme: path.join(__dirname, 'src/theme'),
+        api: path.join(__dirname, 'src/api'),
       },
     },
   ],

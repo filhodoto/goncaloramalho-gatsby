@@ -4,7 +4,7 @@ import { pxToRem, randomNumber } from 'helpers/generic';
 import { animateUp } from 'helpers/animations';
 
 const StyledContainer = styled.div`
-  position: absolute;
+  position: fixed;
   overflow: hidden;
   z-index: -1;
   bottom: 0;

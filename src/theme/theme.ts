@@ -19,17 +19,21 @@ export const lightTheme: DefaultTheme = {
       #00bf72,
       #a8eb12
     )`,
-    primary: '#f5f7fa',
+    primary: '#FEFCF8',
     secondary: '#35a2ca',
+    link: '#FFEFCA',
+    action: '#E9C46A',
   },
   fonts: { ...baseTheme.fonts },
 };
 
 export const darkTheme: DefaultTheme = {
   colors: {
-    bgGradient: `linear-gradient(to bottom, #1f3a4f, #1d3c53, #1b3e57, #193f5c, #174160, #124260, #0c4260, #044360, #00435b, #004256, #054250, #0c414b)`,
-    primary: '#fff',
+    bgGradient: `linear-gradient(to bottom, #16425b, #133a50, #113245, #0e2a3a, #0c2330)`,
+    primary: '#FEFCF8',
     secondary: '#00435b',
+    link: '#96C2C9',
+    action: '#E9C46A',
   },
   fonts: { ...lightTheme.fonts },
 };

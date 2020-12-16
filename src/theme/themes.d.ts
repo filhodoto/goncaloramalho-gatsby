@@ -21,6 +21,8 @@ declare module 'styled-components/macro' {
       bgGradient: string;
       primary: string;
       secondary: string;
+      link: string;
+      action: string;
     };
     fonts: BaseTheme['fonts'];
   }
