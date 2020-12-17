@@ -20,6 +20,7 @@ interface BgElementProps {
   animationName: Keyframes;
   delay: string;
   duration: string;
+  isFeatureEl: boolean;
 }
 
 const BgElement = styled(BgShape)<BgElementProps>`
@@ -33,10 +34,12 @@ const BgElement = styled(BgShape)<BgElementProps>`
     ${(props) => props.delay} linear infinite;
 `;
 
-// Create object with css styles for each bg element created
-const createBgEl = (index: number, numberOfElements: number) => {
-  // Divide elements along the screen according to index
-  const positionRange: { min: number; max: number } = {
+// Divide elements along the screen according to index
+const setPositionRange = (
+  index: number,
+  numberOfElements: number
+): { min: number; max: number } => {
+  return {
     min:
       index < numberOfElements / 3
         ? 0
@@ -50,18 +53,20 @@ const createBgEl = (index: number, numberOfElements: number) => {
         ? 66
         : 100,
   };
+};
 
+// Create object with css styles for each bg element created
+const createBgEl = (index: number, numberOfElements: number) => {
   // If it's multiple of 4 it means it's an svg with a feature, those have different values
-  // TODO:: Find a way of doing this only once to tell components if they are svg images or not
-  const maxSize = index % 4 === 0 ? 40 : 100;
-  const animation = index % 4 === 0 ? animateUp : animateUpAndRotate;
-
+  const isFeatureEl = index % 4 === 0;
+  const positionRange = setPositionRange(index, numberOfElements);
   return {
-    size: pxToRem(randomNumber(maxSize, 20)),
+    size: pxToRem(randomNumber(isFeatureEl ? 60 : 100, 20)),
     position: `${randomNumber(positionRange.max, positionRange.min)}%`,
-    animationName: animation,
+    animationName: isFeatureEl ? animateUp : animateUpAndRotate,
     delay: `${randomNumber(10)}s`,
     duration: `${randomNumber(30, 8)}s`,
+    isFeatureEl: isFeatureEl,
   };
 };
 
@@ -82,7 +87,6 @@ const Background = (): JSX.Element => {
   return (
     <StyledContainer>
       {elements.map((item, index) => {
-        //TODO:: Find a way to tell bgElement if it should render an image or the default shapes
         return <BgElement key={index} {...item} />;
       })}
     </StyledContainer>

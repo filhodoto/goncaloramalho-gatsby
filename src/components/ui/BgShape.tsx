@@ -4,6 +4,9 @@ import Beer from 'images/beer.svg';
 import Plane from 'images/plane.svg';
 import Web from 'images/web.svg';
 import Dish from 'images/dish.svg';
+import Comic from 'images/comic.svg';
+import { AnimateOnChange } from 'react-animation';
+import { css } from 'styled-components';
 
 // Blob shape path we can randomly choose for our bg shapes
 const shapes: string[] = [
@@ -13,56 +16,52 @@ const shapes: string[] = [
   'M48.9,-70.2C62.7,-67.2,72.9,-52.6,79,-36.8C85.1,-21,87.2,-4.1,82,9.7C76.7,23.5,64.2,34.1,53.2,45.1C42.2,56,32.6,67.2,20,73.2C7.5,79.1,-8.1,79.8,-18.6,72.5C-29.1,65.2,-34.6,49.9,-46.7,38.8C-58.9,27.8,-77.7,20.8,-82.4,9.9C-87.1,-1.1,-77.6,-16.1,-66.4,-26.1C-55.2,-36,-42.4,-41,-31,-45.2C-19.7,-49.4,-9.8,-52.8,3.8,-58.8C17.5,-64.8,35.1,-73.3,48.9,-70.2Z',
 ];
 
+const svgStyles = css`
+  height: 100%;
+  width: 100%;
+`;
+
+// TODO:: Separate CSS styles for animation to parent div and the styles for sizing to svg
+// TODO:: Find a way to not repeat that CSS in all SVG components
 const BgShape: FC<{
   className?: string;
+  isFeatureEl: boolean;
 }> = (props): JSX.Element => {
   // Define shape by randomly getting a path from shapes array
   const shape = randomNumber(3);
-  const [feature, setFeature] = useState<string>('dish');
+  const [feature, setFeature] = useState<string>('web');
 
-  switch (feature) {
-    case 'beer':
-      return (
-        <Beer
-          xmlns='http://www.w3.org/2000/svg'
-          className={props.className}
-        ></Beer>
-      );
-
-    case 'web':
-      return (
-        <Web
-          xmlns='http://www.w3.org/2000/svg'
-          className={props.className}
-        ></Web>
-      );
-
-    case 'plane':
-      return (
-        <Plane
-          xmlns='http://www.w3.org/2000/svg'
-          className={props.className}
-        ></Plane>
-      );
-    case 'dish':
-      return (
-        <Dish
-          xmlns='http://www.w3.org/2000/svg'
-          className={props.className}
-        ></Dish>
-      );
-
-    default:
-      return (
-        <svg
-          viewBox='0 0 200 200'
-          xmlns='http://www.w3.org/2000/svg'
-          className={props.className}
-        >
+  // If it's not a feature element, just run the default blogs
+  return (
+    <div className={props.className}>
+      {!props.isFeatureEl ? (
+        <svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'>
           <path d={shapes[shape]} transform='translate(100 100)' />
         </svg>
-      );
-  }
+      ) : (
+        <AnimateOnChange
+          animationIn='fadeIn'
+          animationOut='fadeOut'
+          durationOut={500}
+        >
+          {(() => {
+            switch (feature) {
+              case 'dish':
+                return <Dish css={svgStyles} />;
+              case 'plane':
+                return <Plane css={svgStyles} />;
+              case 'comic':
+                return <Comic css={svgStyles} />;
+              case 'web':
+                return <Web css={svgStyles} />;
+              default:
+                return <Beer css={svgStyles} />;
+            }
+          })()}
+        </AnimateOnChange>
+      )}
+    </div>
+  );
 };
 
 export default BgShape;
