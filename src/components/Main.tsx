@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { pxToRem } from 'helpers/generic';
+import { useDispatch, useSelector } from 'react-redux';
+import { AnimateOnChange } from 'react-animation';
 import styled from 'styled-components';
 import { up } from 'styled-breakpoints';
-import { AnimateOnChange } from 'react-animation';
+import { pxToRem } from 'helpers/generic';
 import SocialLinks from 'components/ui/SocialLinks';
 import { useSiteMetadata } from 'api/global';
+import { State } from 'state/reducer';
+import { setFeature } from 'state/actions';
 
 const MainContainer = styled.main`
   text-align: center;
@@ -43,14 +46,15 @@ const Social = styled.div`
 `;
 
 const Main = (): JSX.Element => {
-  const features: { feature: string; icon: string }[] = [
-    { feature: 'Web enthusiast', icon: 'beer' },
-    { feature: 'Backpacker', icon: 'plane' },
-    { feature: 'Beer drinker', icon: '' },
-    { feature: 'Comics reader', icon: '' },
-    { feature: 'Cheese addict', icon: '' },
-  ];
-  const [whatIam, setWhatIam] = useState(features[0]);
+  // Get features from store
+  const features = useSelector<State, State['features']>(
+    (state) => state.features
+  );
+  // Get currrent feature from store
+  const currentFeature = useSelector<State, State['currentFeature']>(
+    (state) => state.currentFeature
+  );
+  const dispatch = useDispatch();
   const [featuresCounter, setFeaturesCounter] = useState(0);
 
   //Note:: Using this as it's Gatsby standart but I'm not sure I like this approach for the future
@@ -69,7 +73,8 @@ const Main = (): JSX.Element => {
 
   useEffect(() => {
     // Set new feature using featuresCounter as object index
-    setWhatIam(features[featuresCounter]);
+    dispatch(setFeature(features[featuresCounter]));
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [featuresCounter]);
 
@@ -84,7 +89,7 @@ const Main = (): JSX.Element => {
             animationOut='bounceOut'
             durationOut={500}
           >
-            <Features>{whatIam.feature}</Features>
+            <Features>{currentFeature.feature}</Features>
           </AnimateOnChange>{' '}
           who likes to craft interesting and beautiful projecs for the web. To
           know more about me take a look at links below or we can have an{' '}

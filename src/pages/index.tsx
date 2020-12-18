@@ -1,8 +1,10 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { State } from 'state/reducer';
+import styled, { ThemeProvider } from 'styled-components';
 import Background from 'components/ui/Background';
 import Main from 'components/Main';
 import GlobalStyle from 'styles/globalStyle';
-import styled, { ThemeProvider } from 'styled-components';
 import { themeController } from 'theme/theme';
 import { pxToRem } from 'helpers/generic';
 import Footer from 'components/Footer';
@@ -16,8 +18,11 @@ const MainContainer = styled.div`
 `;
 
 export default function Home(): JSX.Element {
+  const isDarkMode = useSelector<State, State['darkmode']>(
+    (state) => state.darkmode
+  );
   return (
-    <ThemeProvider theme={themeController['dark']!}>
+    <ThemeProvider theme={themeController[isDarkMode ? 'dark' : 'light']!}>
       <GlobalStyle />
       <MainContainer>
         <Header />
