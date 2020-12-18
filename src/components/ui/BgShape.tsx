@@ -7,6 +7,8 @@ import Dish from 'images/dish.svg';
 import Comic from 'images/comic.svg';
 import { AnimateOnChange } from 'react-animation';
 import { css } from 'styled-components';
+import { useSelector } from 'react-redux';
+import { State } from 'state/reducer';
 
 // Blob shape path we can randomly choose for our bg shapes
 const shapes: string[] = [
@@ -21,15 +23,16 @@ const svgStyles = css`
   width: 100%;
 `;
 
-// TODO:: Separate CSS styles for animation to parent div and the styles for sizing to svg
-// TODO:: Find a way to not repeat that CSS in all SVG components
 const BgShape: FC<{
   className?: string;
   isFeatureEl: boolean;
 }> = (props): JSX.Element => {
   // Define shape by randomly getting a path from shapes array
   const shape = randomNumber(3);
-  const [feature, setFeature] = useState<string>('web');
+  // Get curretn feature from redux store so we can cahnge the icons when it changes
+  const currentFeature = useSelector<State, State['currentFeature']>(
+    (state) => state.currentFeature
+  );
 
   // If it's not a feature element, just run the default blogs
   return (
@@ -45,7 +48,7 @@ const BgShape: FC<{
           durationOut={500}
         >
           {(() => {
-            switch (feature) {
+            switch (currentFeature['icon']) {
               case 'dish':
                 return <Dish css={svgStyles} />;
               case 'plane':

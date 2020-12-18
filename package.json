@@ -1,7 +1,8 @@
 {
   "name": "goncaloramalho",
   "private": true,
-  "description": "Gonçalo Ramalho personal page",
+  "description": "Gonçalo Ramalho personal website",
+  "author": "Gonçalo Ramalho <meet@goncaloramalho.com>",
   "version": "0.1.0",
   "license": "0BSD",
   "scripts": {
@@ -18,15 +19,19 @@
     "fontsource-montserrat": "^3.1.5",
     "fontsource-source-sans-pro": "^3.1.5",
     "gatsby": "^2.26.1",
+    "gatsby-plugin-react-redux": "^1.1.0",
     "gatsby-plugin-styled-components": "^3.6.0",
     "gatsby-plugin-typescript": "^2.8.0",
     "gatsby-plugin-typescript-checker": "^1.1.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "react-redux": "^7.2.2",
+    "redux": "^4.0.5",
     "styled-components": "^5.2.1",
     "typescript": "^4.1.2"
   },
   "devDependencies": {
+    "@types/react-redux": "^7.1.12",
     "@types/styled-components": "^5.1.4",
     "@typescript-eslint/eslint-plugin": "^4.9.1",
     "@typescript-eslint/parser": "^4.9.1",
