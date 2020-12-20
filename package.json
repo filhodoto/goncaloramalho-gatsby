@@ -46,6 +46,7 @@
     "gatsby-plugin-root-import": "^2.0.5",
     "prettier": "2.1.2",
     "react-animation": "^1.2.2",
+    "react-switch": "^5.0.1",
     "styled-breakpoints": "^9.0.8",
     "styled-normalize": "^8.0.7"
   },

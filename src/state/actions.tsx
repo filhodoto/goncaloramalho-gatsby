@@ -17,7 +17,6 @@ export const toggleTheme = (payload: boolean): ToggleDarkMode => ({
   payload: payload,
 });
 
-// TODO:: useDispatch when callinh this action instead of passing it on the function
 export const setFeature = (feature: Feature): SetFeatureMode => ({
   type: SET_FEATURE,
   payload: feature,
