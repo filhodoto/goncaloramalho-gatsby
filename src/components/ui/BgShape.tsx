@@ -1,14 +1,14 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useMemo } from 'react';
 import { randomNumber } from 'helpers/generic';
+import { AnimateOnChange } from 'react-animation';
+import { css } from 'styled-components';
+import { useSelector } from 'react-redux';
+import { State } from 'state/reducer';
 import Beer from 'images/beer.svg';
 import Plane from 'images/plane.svg';
 import Web from 'images/web.svg';
 import Dish from 'images/dish.svg';
 import Comic from 'images/comic.svg';
-import { AnimateOnChange } from 'react-animation';
-import { css } from 'styled-components';
-import { useSelector } from 'react-redux';
-import { State } from 'state/reducer';
 
 // Blob shape path we can randomly choose for our bg shapes
 const shapes: string[] = [
@@ -25,44 +25,54 @@ const svgStyles = css`
 
 const BgShape: FC<{
   className?: string;
-  isFeatureEl: boolean;
+  isFeatureEl?: boolean;
 }> = (props): JSX.Element => {
-  // Define shape by randomly getting a path from shapes array
-  const shape = randomNumber(3);
-  // Get curretn feature from redux store so we can cahnge the icons when it changes
+  // Get current feature from redux store so we can cahnge the icons when it changes
   const currentFeature = useSelector<State, State['currentFeature']>(
     (state) => state.currentFeature
   );
 
-  // If it's not a feature element, just run the default blogs
+  // Create a blob shape based. useMemo to prevent it from re-render and change shape when we change theme
+  const blobShape = useMemo(() => {
+    // Define shape by randomly getting a path from shapes array
+    const shape = randomNumber(3);
+
+    return (
+      <svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'>
+        <path d={shapes[shape]} transform='translate(100 100)' />
+      </svg>
+    );
+  }, []);
+
+  // Render value with useMemo to prevent it from re-render when we change theme
+  const featureShape = useMemo(() => {
+    return (
+      <AnimateOnChange
+        animationIn='bounceIn'
+        animationOut='bounceOut'
+        durationOut={500}
+      >
+        {(() => {
+          switch (currentFeature['icon']) {
+            case 'dish':
+              return <Dish css={svgStyles} />;
+            case 'plane':
+              return <Plane css={svgStyles} />;
+            case 'comic':
+              return <Comic css={svgStyles} />;
+            case 'web':
+              return <Web css={svgStyles} />;
+            default:
+              return <Beer css={svgStyles} />;
+          }
+        })()}
+      </AnimateOnChange>
+    );
+  }, [currentFeature]);
+
   return (
     <div className={props.className}>
-      {!props.isFeatureEl ? (
-        <svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'>
-          <path d={shapes[shape]} transform='translate(100 100)' />
-        </svg>
-      ) : (
-        <AnimateOnChange
-          animationIn='fadeIn'
-          animationOut='fadeOut'
-          durationOut={500}
-        >
-          {(() => {
-            switch (currentFeature['icon']) {
-              case 'dish':
-                return <Dish css={svgStyles} />;
-              case 'plane':
-                return <Plane css={svgStyles} />;
-              case 'comic':
-                return <Comic css={svgStyles} />;
-              case 'web':
-                return <Web css={svgStyles} />;
-              default:
-                return <Beer css={svgStyles} />;
-            }
-          })()}
-        </AnimateOnChange>
-      )}
+      {!props.isFeatureEl ? blobShape : featureShape}
     </div>
   );
 };

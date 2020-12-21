@@ -22,7 +22,7 @@ export default function Home(): JSX.Element {
     (state) => state.darkmode
   );
   return (
-    <ThemeProvider theme={themeController[isDarkMode ? 'dark' : 'light']!}>
+    <ThemeProvider theme={themeController[isDarkMode ? 'dark' : 'light']}>
       <GlobalStyle />
       <MainContainer>
         <Header />

@@ -55,6 +55,7 @@ const BoldText = styled.p`
 `;
 
 const Main = (): JSX.Element => {
+  const dispatch = useDispatch();
   // Get features from store
   const features = useSelector<State, State['features']>(
     (state) => state.features
@@ -63,7 +64,6 @@ const Main = (): JSX.Element => {
   const currentFeature = useSelector<State, State['currentFeature']>(
     (state) => state.currentFeature
   );
-  const dispatch = useDispatch();
   const [featuresCounter, setFeaturesCounter] = useState(0);
 
   //Note:: Using this as it's Gatsby standart but I'm not sure I like this approach for the future
@@ -81,6 +81,7 @@ const Main = (): JSX.Element => {
   }, [features.length]);
 
   useEffect(() => {
+    console.log('setFeature');
     // Set new feature using featuresCounter as object index
     dispatch(setFeature(features[featuresCounter]));
 
@@ -90,7 +91,7 @@ const Main = (): JSX.Element => {
   return (
     <MainContainer>
       <ContentContainer>
-        <Heading>Olá! I'm Gonçalo</Heading>
+        <Heading>Olá! I&apos;m Gonçalo</Heading>
         <p>
           I’m a{' '}
           <AnimateOnChange

@@ -28,23 +28,13 @@ export const darkTheme: DefaultTheme = {
     link: '#8eadb9  ',
     action: '#3C546D',
   },
-  // colors: {
-  //   bgGradient: `linear-gradient(to bottom, #16425b, #133a50, #113245, #0e2a3a, #0c2330)`,
-  //   primary: '#004d7a',
-  //   text: '#FEFCF8',
-  //   link: '#E9DFC9',
-  //   action: '#E9C46A',
-  // },
   fonts: { ...baseTheme.fonts },
 };
 
 // Use Record so we can use typed maps and prevent error:
 // "An index signature parameter type cannot be a union type. Consider using a mapped object type instead.ts(1337)"
 // http://www.rickcarlino.com/2017/02/27/real-world-use-case-for-typescript-record-types.html
-export const themeController: Partial<Record<
-  'light' | 'dark',
-  DefaultTheme
->> = {
+export const themeController: Record<'light' | 'dark', DefaultTheme> = {
   light: lightTheme,
   dark: darkTheme,
 };
