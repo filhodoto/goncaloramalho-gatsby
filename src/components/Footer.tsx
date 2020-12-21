@@ -15,10 +15,11 @@ const Footer = (): JSX.Element => {
   return (
     <FooterStyled>
       <p>
-        &copy; Copyright {getCurrentYear()}{' '}
+        &copy; Copyright{' '}
         <a href={`mailto: ${email}`} aria-label='email link'>
           Gonçalo Ramalho
-        </a>
+        </a>{' '}
+        {getCurrentYear()}
       </p>
     </FooterStyled>
   );

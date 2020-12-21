@@ -26,6 +26,14 @@ module.exports = {
     'gatsby-plugin-typescript',
     'gatsby-plugin-typescript-checker',
     {
+      resolve: 'gatsby-plugin-react-svg',
+      options: {
+        rule: {
+          include: /images/,
+        },
+      },
+    },
+    {
       resolve: 'gatsby-plugin-eslint',
       options: {
         test: /\.js$|\.jsx$|\.ts$|\.tsx$/,
@@ -47,6 +55,30 @@ module.exports = {
         styles: path.join(__dirname, 'src/styles'),
         theme: path.join(__dirname, 'src/theme'),
         api: path.join(__dirname, 'src/api'),
+        images: path.join(__dirname, 'src/images'),
+        state: path.join(__dirname, 'src/state'),
+      },
+    },
+    {
+      resolve: `gatsby-plugin-react-redux`,
+      options: {
+        // [required] - path to your createStore module
+        pathToCreateStoreModule: './src/state/createStore',
+        // [optional] - options passed to `serialize-javascript`
+        // info: https://github.com/yahoo/serialize-javascript#options
+        // will be merged with these defaults:
+        serialize: {
+          space: 0,
+          // if `isJSON` is set to `false`, `eval` is used to deserialize redux state,
+          // otherwise `JSON.parse` is used
+          isJSON: true,
+          unsafe: false,
+          ignoreFunction: true,
+        },
+        // [optional] - if true will clean up after itself on the client, default:
+        cleanupOnClient: true,
+        // [optional] - name of key on `window` where serialized state will be stored, default:
+        windowKey: '__PRELOADED_STATE__',
       },
     },
   ],

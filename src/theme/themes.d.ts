@@ -9,8 +9,8 @@ declare module 'react' {
 // Define BaseTheme interface, we define this in this file instead of adding it to 'styled-components' like DefaultTheme
 export interface BaseTheme {
   fonts: {
-    bodyFont: string;
-    headingFont: string;
+    body: string;
+    heading: string;
   };
 }
 
@@ -20,7 +20,7 @@ declare module 'styled-components/macro' {
     colors: {
       bgGradient: string;
       primary: string;
-      secondary: string;
+      text: string;
       link: string;
       action: string;
     };

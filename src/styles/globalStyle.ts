@@ -1,6 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 import { normalize } from 'styled-normalize';
-import 'fontsource-source-sans-pro/400.css';
+import 'fontsource-source-sans-pro/400-normal.css';
+import 'fontsource-source-sans-pro/600-normal.css';
 import 'fontsource-montserrat/700.css'; // All styles included.
 
 const GlobalStyle = createGlobalStyle`
@@ -153,11 +154,10 @@ const GlobalStyle = createGlobalStyle`
       box-sizing: border-box;
     }
     font-family: ${(props) =>
-      props.theme.fonts
-        .bodyFont}, -apple-system, BlinkMacSystemFont, 'sans-serif';
+      props.theme.fonts.body}, -apple-system, BlinkMacSystemFont, 'sans-serif';
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    color:  ${(props) => props.theme.colors.primary}
+    color:  ${(props) => props.theme.colors.text}
   }
 
   a {
