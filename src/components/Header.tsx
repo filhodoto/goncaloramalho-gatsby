@@ -29,12 +29,15 @@ const Header: FC<{ theme: DefaultTheme }> = ({ theme }): JSX.Element => {
       <span
         css={`
           margin-right: ${pxToRem(10)};
+          font-size: ${pxToRem(13)};
         `}
       >
         too {isDarkMode ? 'dark' : 'light'}?
       </span>
       <Switch
         onChange={handleSwitchChange}
+        height={20}
+        width={40}
         checkedIcon={false}
         uncheckedIcon={false}
         onColor={theme.colors.secondary}
