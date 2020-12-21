@@ -28,7 +28,7 @@ const BgElement = styled(BgShape)<BgElementProps>`
   width: ${(props) => props.size};
   height: ${(props) => props.size};
   left: ${(props) => props.position};
-  fill: ${(props) => props.theme.colors.secondary};
+  fill: ${(props) => props.theme.colors.primary};
   bottom: ${pxToRem(-100)};
   animation: ${(props) => props.animationName} ${(props) => props.duration}
     ${(props) => props.delay} linear infinite;
@@ -65,7 +65,7 @@ const createBgEl = (index: number, numberOfElements: number) => {
     position: `${randomNumber(positionRange.max, positionRange.min)}%`,
     animationName: isFeatureEl ? animateUp : animateUpAndRotate,
     delay: `${randomNumber(10)}s`,
-    duration: `${randomNumber(30, 8)}s`,
+    duration: `${randomNumber(30, 12)}s`,
     isFeatureEl: isFeatureEl,
   };
 };

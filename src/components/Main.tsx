@@ -14,7 +14,7 @@ const MainContainer = styled.main`
   display: grid;
   place-items: center;
   font-size: ${pxToRem(18)};
-  letter-spacing: 0.05rem;
+  letter-spacing: 0.02rem;
   line-height: 140%;
 
   ${up('sm')} {
@@ -48,6 +48,10 @@ const Features = styled.span`
 const Social = styled.div`
   margin-top: ${pxToRem(50)};
   display: flex;
+`;
+
+const BoldText = styled.p`
+  font-weight: 600;
 `;
 
 const Main = (): JSX.Element => {
@@ -92,18 +96,18 @@ const Main = (): JSX.Element => {
           <AnimateOnChange
             animationIn='bounceIn'
             animationOut='bounceOut'
-            durationOut={500}
+            durationOut={1000}
           >
             <Features>{currentFeature.feature}</Features>
           </AnimateOnChange>{' '}
           who likes to craft interesting and beautiful projecs for the web. To
-          know more about me take a look at links below or we can have an{' '}
+          know more about me{' '}
           {
-            <a href={`mailto: ${email}`} aria-label='email link'>
-              old fashion chat
-            </a>
-          }
-          .
+            <BoldText as='a' href={`mailto: ${email}`} aria-label='send email'>
+              drop me a mail
+            </BoldText>
+          }{' '}
+          or take a look at the links below.
         </p>
         <Social>
           {Object.entries(social).map(([key, value]) => {

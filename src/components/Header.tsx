@@ -40,7 +40,7 @@ const Header: FC<{ theme: DefaultTheme }> = ({ theme }): JSX.Element => {
         width={40}
         checkedIcon={false}
         uncheckedIcon={false}
-        onColor={theme.colors.secondary}
+        onColor={theme.colors.primary}
         offColor={theme.colors.primary}
         offHandleColor={theme.colors.text}
         onHandleColor={theme.colors.text}

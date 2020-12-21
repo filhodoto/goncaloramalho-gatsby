@@ -11,7 +11,6 @@ interface SocialLinksProps {
 const Link = styled.a`
   display: flex;
   place-items: center;
-  color: ${(props) => props.theme.colors.primary};
   font-size: ${pxToRem(14)};
   margin: 0 ${pxToRem(10)} 0;
   cursor: pointer;

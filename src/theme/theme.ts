@@ -11,32 +11,30 @@ export const baseTheme: BaseTheme = {
 
 export const lightTheme: DefaultTheme = {
   colors: {
-    bgGradient: `linear-gradient(
-      to right top,
-      #051937,
-      #004d7a,
-      #008793,
-      #00bf72,
-      #a8eb12
-    )`,
-    primary: '#35a2ca',
-    secondary: '#35a2ca',
-    text: '#FEFCF8',
-    link: '#FFEFCA',
-    action: '#E9C46A',
+    bgGradient: `linear-gradient(to bottom, #f9fbff, #f0f4fd, #e6edfa, #dde6f8, #d3dff5);`,
+    primary: '#CCD6F5',
+    text: '#505970',
+    link: '#3A445D',
+    action: '#DA4167',
   },
   fonts: { ...baseTheme.fonts },
 };
 
 export const darkTheme: DefaultTheme = {
   colors: {
-    bgGradient: `linear-gradient(to bottom, #16425b, #133a50, #113245, #0e2a3a, #0c2330)`,
-    primary: '#00435b',
-    secondary: '#004d7a',
-    text: '#FEFCF8',
-    link: '#96C2C9',
-    action: '#E9C46A',
+    bgGradient: `linear-gradient(to bottom, #0a273d, #072338, #042034, #021c2f, #00192b);`,
+    primary: '#004d7a',
+    text: '#E5E7E6',
+    link: '#8eadb9  ',
+    action: '#3C546D',
   },
+  // colors: {
+  //   bgGradient: `linear-gradient(to bottom, #16425b, #133a50, #113245, #0e2a3a, #0c2330)`,
+  //   primary: '#004d7a',
+  //   text: '#FEFCF8',
+  //   link: '#E9DFC9',
+  //   action: '#E9C46A',
+  // },
   fonts: { ...baseTheme.fonts },
 };
 
