@@ -13,9 +13,14 @@ const MainContainer = styled.main`
   text-align: center;
   display: grid;
   place-items: center;
-  font-size: ${pxToRem(24)};
+  font-size: ${pxToRem(18)};
   letter-spacing: 0.05rem;
-  line-height: 1.8rem;
+  line-height: 140%;
+
+  ${up('sm')} {
+    font-size: ${pxToRem(24)};
+    line-height: 125%;
+  }
 `;
 
 const ContentContainer = styled.div`
@@ -32,12 +37,12 @@ const Heading = styled.h1`
   font-family: ${(props) => props.theme.fonts.heading};
   line-height: 120%;
   margin-bottom: ${pxToRem(20)};
-  font-size: 3rem;
+  font-size: 2.2em;
 `;
 
 const Features = styled.span`
   font-family: ${(props) => props.theme.fonts.heading};
-  font-size: 2rem;
+  font-size: 1.5em;
 `;
 
 const Social = styled.div`
