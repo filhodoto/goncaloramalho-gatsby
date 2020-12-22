@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styled, { Keyframes } from 'styled-components/macro';
 import { pxToRem, randomNumber } from 'helpers/generic';
 import { animateUp, animateUpAndRotate } from 'helpers/animations';
-import BgShape from './BgShape';
+import BgShape from 'components/ui/BgShape';
 
 const StyledContainer = styled.div`
   position: fixed;

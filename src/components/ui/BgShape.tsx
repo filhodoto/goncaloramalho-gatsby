@@ -46,28 +46,30 @@ const BgShape: FC<{
 
   // Render value with useMemo to prevent it from re-render when we change theme
   const featureShape = useMemo(() => {
-    return (
-      <AnimateOnChange
-        animationIn='bounceIn'
-        animationOut='bounceOut'
-        durationOut={500}
-      >
-        {(() => {
-          switch (currentFeature['icon']) {
-            case 'dish':
-              return <Dish css={svgStyles} />;
-            case 'plane':
-              return <Plane css={svgStyles} />;
-            case 'comic':
-              return <Comic css={svgStyles} />;
-            case 'web':
-              return <Web css={svgStyles} />;
-            default:
-              return <Beer css={svgStyles} />;
-          }
-        })()}
-      </AnimateOnChange>
-    );
+    if (typeof window !== 'undefined' && AnimateOnChange) {
+      return (
+        <AnimateOnChange
+          animationIn='bounceIn'
+          animationOut='bounceOut'
+          durationOut={500}
+        >
+          {(() => {
+            switch (currentFeature['icon']) {
+              case 'dish':
+                return <Dish css={svgStyles} />;
+              case 'plane':
+                return <Plane css={svgStyles} />;
+              case 'comic':
+                return <Comic css={svgStyles} />;
+              case 'web':
+                return <Web css={svgStyles} />;
+              default:
+                return <Beer css={svgStyles} />;
+            }
+          })()}
+        </AnimateOnChange>
+      );
+    }
   }, [currentFeature]);
 
   return (

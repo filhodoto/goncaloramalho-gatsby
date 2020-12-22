@@ -81,7 +81,6 @@ const Main = (): JSX.Element => {
   }, [features.length]);
 
   useEffect(() => {
-    console.log('setFeature');
     // Set new feature using featuresCounter as object index
     dispatch(setFeature(features[featuresCounter]));
 
@@ -94,13 +93,15 @@ const Main = (): JSX.Element => {
         <Heading>Olá! I&apos;m Gonçalo</Heading>
         <p>
           I’m a{' '}
-          <AnimateOnChange
-            animationIn='bounceIn'
-            animationOut='bounceOut'
-            durationOut={1000}
-          >
-            <Features>{currentFeature.feature}</Features>
-          </AnimateOnChange>{' '}
+          {typeof window !== 'undefined' && AnimateOnChange && (
+            <AnimateOnChange
+              animationIn='bounceIn'
+              animationOut='bounceOut'
+              durationOut={1000}
+            >
+              <Features>{currentFeature.feature}</Features>
+            </AnimateOnChange>
+          )}{' '}
           who likes to craft interesting and beautiful projecs for the web. To
           know more about me{' '}
           {
