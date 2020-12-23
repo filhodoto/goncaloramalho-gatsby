@@ -25,6 +25,7 @@ module.exports = {
     'gatsby-plugin-styled-components',
     'gatsby-plugin-typescript',
     'gatsby-plugin-typescript-checker',
+    `gatsby-plugin-preload-fonts`,
     {
       resolve: 'gatsby-plugin-react-svg',
       options: {
