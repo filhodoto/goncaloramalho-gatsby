@@ -38,6 +38,15 @@ const Heading = styled.h1`
   line-height: 120%;
   margin-bottom: ${pxToRem(20)};
   font-size: 2.2em;
+  span {
+    display: block;
+  }
+
+  ${up('md')} {
+    span {
+      display: inline;
+    }
+  }
 `;
 
 const Features = styled.span`
@@ -90,7 +99,9 @@ const Main = (): JSX.Element => {
   return (
     <MainContainer>
       <ContentContainer>
-        <Heading>Olá! I&apos;m Gonçalo</Heading>
+        <Heading>
+          <span>Olá!</span> I&apos;m Gonçalo
+        </Heading>
         <p>
           I’m a{' '}
           {typeof window !== 'undefined' && AnimateOnChange && (

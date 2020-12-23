@@ -9,12 +9,12 @@ interface SEOInterface {
   keywords?: string[];
   image?: string;
 }
-//TODO:: Find a (not over complicated) way of importing image for card
+//TODO:: Find a (not over complicated) way of importing image for card and change default image
 const SEO: FC<SEOInterface> = ({
   isDarkMode,
   title,
   description,
-  image: metaImage = 'https://res.cloudinary.com/jlengstorf/image/upload/f_auto,g_auto/v1593579116/jason.af/og-image.jpg',
+  image: metaImage = 'http://goncaloramalho.com/media/social.jpg',
 }) => {
   return (
     <StaticQuery
@@ -35,9 +35,6 @@ const SEO: FC<SEOInterface> = ({
           description || data.site.siteMetadata.description;
 
         const currentTitle: string = title || data.site.siteMetadata.title;
-
-        console.log('do we have metaImage ? ', metaImage);
-        console.log(metaImage);
         return (
           <Helmet defer={false}>
             {/* General tags */}
