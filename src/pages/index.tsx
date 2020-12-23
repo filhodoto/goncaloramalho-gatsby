@@ -9,6 +9,7 @@ import Main from 'components/Main';
 import Background from 'components/Background';
 import Footer from 'components/Footer';
 import Header from 'components/Header';
+import SEO from 'components/seo/SEO';
 
 const MainContainer = styled.div`
   display: grid;
@@ -23,6 +24,7 @@ export default function Home(): JSX.Element {
   );
   return (
     <ThemeProvider theme={themeController[isDarkMode ? 'dark' : 'light']}>
+      <SEO isDarkMode={isDarkMode} />
       <GlobalStyle />
       <MainContainer>
         <Header />

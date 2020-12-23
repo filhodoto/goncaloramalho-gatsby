@@ -10,10 +10,21 @@ module.exports = {
   siteMetadata: {
     title: 'Gonçalo Ramalho - Web Developer',
     description:
-      'Hello my name is Gonçalo Ramalho and I’m a web enthusiast who likes to craft interesting and beautiful projecs for the web.',
-    author: '@filhodoto',
+      'Hi there! I’m Gonçalo, a web enthusiast who likes to craft interesting and beautiful projecs for the web.',
+    author: 'Gonçalo Ramalho',
     email: 'meet@goncaloramalho.com',
     siteUrl: 'http://www.goncaloramalho.com',
+    keywords: [
+      'web developer',
+      'web design',
+      'web Development',
+      'frontend-developer',
+      'react',
+      'javascript',
+      'portfolio',
+      'Gonçalo Ramalho',
+      'remote',
+    ],
     social: {
       linkedin: 'https://www.linkedin.com/in/gtramalho',
       github: 'https://github.com/filhodoto',
@@ -22,6 +33,7 @@ module.exports = {
     },
   },
   plugins: [
+    'gatsby-plugin-react-helmet',
     'gatsby-plugin-styled-components',
     'gatsby-plugin-typescript',
     'gatsby-plugin-typescript-checker',
