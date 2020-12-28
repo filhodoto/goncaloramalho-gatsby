@@ -62,6 +62,8 @@ const SEO: FC<SEOInterface> = ({
             <meta name='twitter:title' content={currentTitle} />
             <meta name='twitter:description' content={metaDescription} />
             <meta name='twitter:image' content={metaImage} />
+
+            <html lang='en' />
           </Helmet>
         );
       }}

@@ -36,6 +36,8 @@ const Header: FC<{ theme: DefaultTheme }> = ({ theme }): JSX.Element => {
       </span>
       <Switch
         onChange={handleSwitchChange}
+        aria-label='switch theme'
+        role='checkbox'
         height={20}
         width={40}
         checkedIcon={false}

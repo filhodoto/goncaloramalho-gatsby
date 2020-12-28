@@ -35,7 +35,7 @@ https://react-typescript-cheatsheet.netlify.app/docs/basic/getting-started/funct
  */
 const SocialLinks = ({ link, platform }: SocialLinksProps): JSX.Element => {
   return (
-    <Link href={link}>
+    <Link href={link} aria-label={platform}>
       <Icon platform={platform} />
     </Link>
   );
