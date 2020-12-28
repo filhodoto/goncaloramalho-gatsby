@@ -2,3 +2,10 @@
 package.json
 package-lock.json
 public
+# dev
+/.history
+/.vscode
+
+# Ignore all HTML and min.css files:
+*.html
+*.min.css
