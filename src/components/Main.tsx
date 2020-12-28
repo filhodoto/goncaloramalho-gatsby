@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { AnimateOnChange } from 'react-animation';
 import styled from 'styled-components';
@@ -65,6 +65,7 @@ const BoldText = styled.p`
 
 const Main = (): JSX.Element => {
   const dispatch = useDispatch();
+  const [startAnimation, setStartAnimation] = useState(false);
   // Get features from store
   const features = useSelector<State, State['features']>(
     (state) => state.features
@@ -81,13 +82,19 @@ const Main = (): JSX.Element => {
   useEffect(() => {
     // Start features loop by incrementing featuresCounter
     const featuresLoopInterval = setInterval(() => {
+      // On the first time we are gonna change feature we set the animation to true
+      // so we can render the text with animation
+      if (!startAnimation) {
+        setStartAnimation(true);
+      }
+
       // Increment features counter so we can change the feature, if we reached the last one, start again on 0
       setFeaturesCounter((featuresCounter) =>
         featuresCounter < features.length - 1 ? featuresCounter + 1 : 0
       );
     }, 5000);
     return () => clearInterval(featuresLoopInterval);
-  }, [features.length]);
+  }, [features.length, startAnimation]);
 
   useEffect(() => {
     // Set new feature using featuresCounter as object index
@@ -96,6 +103,25 @@ const Main = (): JSX.Element => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [featuresCounter]);
 
+  const featureText = useMemo(() => {
+    // Check typeof window !== 'undefined' && AnimateOnChange to prevent gatsby build mistake
+    // Check startAnimation yo prevent first load animation
+    if (typeof window !== 'undefined' && AnimateOnChange && startAnimation) {
+      return (
+        <AnimateOnChange
+          animationIn='bounceIn'
+          animationOut='bounceOut'
+          durationOut={1000}
+        >
+          <Features>{currentFeature.feature}</Features>
+        </AnimateOnChange>
+      );
+    } else {
+      // On first load we render text without animation
+      return <Features>{currentFeature.feature}</Features>;
+    }
+  }, [currentFeature, startAnimation]);
+
   return (
     <MainContainer>
       <ContentContainer>
@@ -103,18 +129,8 @@ const Main = (): JSX.Element => {
           <span>Olá!</span> I&apos;m Gonçalo
         </Heading>
         <p>
-          I’m a{' '}
-          {typeof window !== 'undefined' && AnimateOnChange && (
-            <AnimateOnChange
-              animationIn='bounceIn'
-              animationOut='bounceOut'
-              durationOut={1000}
-            >
-              <Features>{currentFeature.feature}</Features>
-            </AnimateOnChange>
-          )}{' '}
-          who likes to craft interesting and beautiful projecs for the web. To
-          know more about me you can{' '}
+          I’m a {featureText} who likes to craft interesting and beautiful
+          projecs for the web. To know more about me you can{' '}
           {
             <BoldText as='a' href={`mailto: ${email}`} aria-label='send email'>
               drop me a mail

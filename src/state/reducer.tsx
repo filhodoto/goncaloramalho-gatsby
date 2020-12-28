@@ -25,7 +25,7 @@ export const initialState: State = {
     { feature: 'Comics reader', icon: 'comic' },
     { feature: 'Cheese addict', icon: 'dish' },
   ],
-  currentFeature: { feature: 'Web enthusiast', icon: 'web' },
+  currentFeature: { feature: 'Web developer', icon: 'web' },
 };
 
 const appReducer = (
