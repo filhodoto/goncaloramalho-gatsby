@@ -7,7 +7,7 @@ import { State } from 'state/reducer';
 import Beer from 'images/svg/beer.svg';
 import Plane from 'images/svg/plane.svg';
 import Web from 'images/svg/web.svg';
-import Dish from 'images/svg/dish.svg';
+import Cheese from 'images/svg/cheese.svg';
 import Comic from 'images/svg/comic.svg';
 
 // Blob shape path we can randomly choose for our bg shapes
@@ -56,7 +56,7 @@ const BgShape: FC<{
           {(() => {
             switch (currentFeature['icon']) {
               case 'dish':
-                return <Dish css={svgStyles} />;
+                return <Cheese css={svgStyles} />;
               case 'plane':
                 return <Plane css={svgStyles} />;
               case 'comic':

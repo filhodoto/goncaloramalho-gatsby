@@ -58,10 +58,10 @@ const setPositionRange = (
 // Create object with css styles for each bg element created
 const createBgEl = (index: number, numberOfElements: number) => {
   // If it's multiple of 4 it means it's an svg with a feature, those have different values
-  const isFeatureEl = index % 4 === 0;
+  const isFeatureEl = index % 3 === 0;
   const positionRange = setPositionRange(index, numberOfElements);
   return {
-    size: pxToRem(randomNumber(isFeatureEl ? 60 : 100, 20)),
+    size: pxToRem(randomNumber(isFeatureEl ? 60 : 100, isFeatureEl ? 30 : 20)),
     position: `${randomNumber(positionRange.max, positionRange.min)}%`,
     animationName: isFeatureEl ? animateUp : animateUpAndRotate,
     delay: `${randomNumber(10)}s`,
@@ -71,7 +71,7 @@ const createBgEl = (index: number, numberOfElements: number) => {
 };
 
 const Background = (): JSX.Element => {
-  const numberOfElements = 18;
+  const numberOfElements = 21;
   const [elements, setElements] = useState<BgElementProps[]>([]);
 
   // Create bg Elements

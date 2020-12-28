@@ -74,6 +74,19 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `goncalo-ramalho-website`,
+        short_name: `gr-website`,
+        start_url: `/`,
+        background_color: `#f7f0eb`,
+        theme_color: `#505970`,
+        display: `standalone`,
+        display: 'minimal-ui',
+        icon: 'src/images/png/favicon.png', // This path is relative to the root of the site.
+      },
+    },
+    {
       resolve: `gatsby-plugin-react-redux`,
       options: {
         // [required] - path to your createStore module
