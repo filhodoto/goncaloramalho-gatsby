@@ -42,7 +42,7 @@ module.exports = {
       resolve: 'gatsby-plugin-react-svg',
       options: {
         rule: {
-          include: /images/,
+          include: path.join(__dirname, 'src/images/svg/'),
         },
       },
     },
@@ -68,8 +68,9 @@ module.exports = {
         styles: path.join(__dirname, 'src/styles'),
         theme: path.join(__dirname, 'src/theme'),
         api: path.join(__dirname, 'src/api'),
-        images: path.join(__dirname, 'src/images'),
         state: path.join(__dirname, 'src/state'),
+        assets: path.join(__dirname, 'src/assets'),
+        images: path.join(__dirname, 'src/images'),
       },
     },
     {

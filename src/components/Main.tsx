@@ -114,13 +114,13 @@ const Main = (): JSX.Element => {
             </AnimateOnChange>
           )}{' '}
           who likes to craft interesting and beautiful projecs for the web. To
-          know more about me{' '}
+          know more about me you can{' '}
           {
             <BoldText as='a' href={`mailto: ${email}`} aria-label='send email'>
               drop me a mail
             </BoldText>
           }{' '}
-          or take a look at the links below.
+          so we can have a chat, or take a look at the links below.
         </p>
         <Social>
           {Object.entries(social).map(([key, value]) => {

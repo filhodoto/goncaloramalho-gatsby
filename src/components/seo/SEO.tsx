@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import { Helmet } from 'react-helmet';
 import { StaticQuery, graphql } from 'gatsby';
+import socialImg from 'images/jpg/social.jpg';
 
 interface SEOInterface {
   isDarkMode: boolean;
@@ -9,12 +10,12 @@ interface SEOInterface {
   keywords?: string[];
   image?: string;
 }
-//TODO:: Find a (not over complicated) way of importing image for card and change default image
+
 const SEO: FC<SEOInterface> = ({
   isDarkMode,
   title,
   description,
-  image: metaImage = 'http://goncaloramalho.com/media/social.jpg',
+  image: metaImage = socialImg,
 }) => {
   return (
     <StaticQuery
@@ -35,6 +36,7 @@ const SEO: FC<SEOInterface> = ({
           description || data.site.siteMetadata.description;
 
         const currentTitle: string = title || data.site.siteMetadata.title;
+
         return (
           <Helmet defer={false}>
             {/* General tags */}
@@ -55,7 +57,7 @@ const SEO: FC<SEOInterface> = ({
               content={isDarkMode ? 'dark' : 'light'}
             />
             <meta name='twitter:dnt' content='on' />
-            <meta name='twitter:card' content='summary_large_image' />
+            <meta name='twitter:card' content='summary' />
             <meta name='twitter:creator' content='@_goncalo' />
             <meta name='twitter:title' content={currentTitle} />
             <meta name='twitter:description' content={metaDescription} />
