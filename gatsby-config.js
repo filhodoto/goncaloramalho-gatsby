@@ -10,10 +10,21 @@ module.exports = {
   siteMetadata: {
     title: 'Gonçalo Ramalho - Web Developer',
     description:
-      'Hello my name is Gonçalo Ramalho and I’m a web enthusiast who likes to craft interesting and beautiful projecs for the web.',
-    author: '@filhodoto',
+      'Hi there! I’m Gonçalo, a web enthusiast who likes to craft interesting and beautiful projecs for the web.',
+    author: 'Gonçalo Ramalho',
     email: 'meet@goncaloramalho.com',
     siteUrl: 'http://www.goncaloramalho.com',
+    keywords: [
+      'web developer',
+      'web design',
+      'web Development',
+      'frontend-developer',
+      'react',
+      'javascript',
+      'portfolio',
+      'Gonçalo Ramalho',
+      'remote',
+    ],
     social: {
       linkedin: 'https://www.linkedin.com/in/gtramalho',
       github: 'https://github.com/filhodoto',
@@ -22,6 +33,7 @@ module.exports = {
     },
   },
   plugins: [
+    'gatsby-plugin-react-helmet',
     'gatsby-plugin-styled-components',
     'gatsby-plugin-typescript',
     'gatsby-plugin-typescript-checker',
@@ -30,7 +42,7 @@ module.exports = {
       resolve: 'gatsby-plugin-react-svg',
       options: {
         rule: {
-          include: /images/,
+          include: path.join(__dirname, 'src/images/svg/'),
         },
       },
     },
@@ -56,8 +68,22 @@ module.exports = {
         styles: path.join(__dirname, 'src/styles'),
         theme: path.join(__dirname, 'src/theme'),
         api: path.join(__dirname, 'src/api'),
-        images: path.join(__dirname, 'src/images'),
         state: path.join(__dirname, 'src/state'),
+        assets: path.join(__dirname, 'src/assets'),
+        images: path.join(__dirname, 'src/images'),
+      },
+    },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `goncalo-ramalho-website`,
+        short_name: `gr-website`,
+        start_url: `/`,
+        background_color: `#f7f0eb`,
+        theme_color: `#505970`,
+        display: `standalone`,
+        display: 'minimal-ui',
+        icon: 'src/images/png/favicon.png', // This path is relative to the root of the site.
       },
     },
     {

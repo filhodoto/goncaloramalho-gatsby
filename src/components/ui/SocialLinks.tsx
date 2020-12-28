@@ -8,7 +8,11 @@ interface SocialLinksProps {
   platform: string;
 }
 
-const Link = styled.a`
+const Link = styled.a.attrs(() => ({
+  target: '_blank',
+  rel: 'noreferrer',
+}))`
+  display: block;
   display: flex;
   place-items: center;
   font-size: ${pxToRem(14)};
@@ -31,7 +35,7 @@ https://react-typescript-cheatsheet.netlify.app/docs/basic/getting-started/funct
  */
 const SocialLinks = ({ link, platform }: SocialLinksProps): JSX.Element => {
   return (
-    <Link href={link} target='_blank'>
+    <Link href={link}>
       <Icon platform={platform} />
     </Link>
   );

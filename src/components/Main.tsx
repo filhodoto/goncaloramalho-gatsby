@@ -38,6 +38,15 @@ const Heading = styled.h1`
   line-height: 120%;
   margin-bottom: ${pxToRem(20)};
   font-size: 2.2em;
+  span {
+    display: block;
+  }
+
+  ${up('md')} {
+    span {
+      display: inline;
+    }
+  }
 `;
 
 const Features = styled.span`
@@ -90,7 +99,9 @@ const Main = (): JSX.Element => {
   return (
     <MainContainer>
       <ContentContainer>
-        <Heading>Olá! I&apos;m Gonçalo</Heading>
+        <Heading>
+          <span>Olá!</span> I&apos;m Gonçalo
+        </Heading>
         <p>
           I’m a{' '}
           {typeof window !== 'undefined' && AnimateOnChange && (
@@ -103,13 +114,13 @@ const Main = (): JSX.Element => {
             </AnimateOnChange>
           )}{' '}
           who likes to craft interesting and beautiful projecs for the web. To
-          know more about me{' '}
+          know more about me you can{' '}
           {
             <BoldText as='a' href={`mailto: ${email}`} aria-label='send email'>
               drop me a mail
             </BoldText>
           }{' '}
-          or take a look at the links below.
+          so we can have a chat, or take a look at the links below.
         </p>
         <Social>
           {Object.entries(social).map(([key, value]) => {

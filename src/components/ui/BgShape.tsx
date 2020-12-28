@@ -4,11 +4,11 @@ import { AnimateOnChange } from 'react-animation';
 import { css } from 'styled-components';
 import { useSelector } from 'react-redux';
 import { State } from 'state/reducer';
-import Beer from 'images/beer.svg';
-import Plane from 'images/plane.svg';
-import Web from 'images/web.svg';
-import Dish from 'images/dish.svg';
-import Comic from 'images/comic.svg';
+import Beer from 'images/svg/beer.svg';
+import Plane from 'images/svg/plane.svg';
+import Web from 'images/svg/web.svg';
+import Cheese from 'images/svg/cheese.svg';
+import Comic from 'images/svg/comic.svg';
 
 // Blob shape path we can randomly choose for our bg shapes
 const shapes: string[] = [
@@ -56,7 +56,7 @@ const BgShape: FC<{
           {(() => {
             switch (currentFeature['icon']) {
               case 'dish':
-                return <Dish css={svgStyles} />;
+                return <Cheese css={svgStyles} />;
               case 'plane':
                 return <Plane css={svgStyles} />;
               case 'comic':
