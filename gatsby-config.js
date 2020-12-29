@@ -13,7 +13,7 @@ module.exports = {
       'Hi there! I’m Gonçalo, a web enthusiast who likes to craft interesting and beautiful projecs for the web.',
     author: 'Gonçalo Ramalho',
     email: 'meet@goncaloramalho.com',
-    siteUrl: 'http://www.goncaloramalho.com',
+    siteUrl: 'https://www.goncaloramalho.com',
     keywords: [
       'web developer',
       'web design',

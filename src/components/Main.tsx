@@ -139,13 +139,13 @@ const Main = (): JSX.Element => {
         </Heading>
         <p>
           I’m a {featureText} who likes to craft interesting and beautiful
-          projecs for the web. To know more about me you can{' '}
+          projecs for the web. Want to know more? Feel free to drop me{' '}
           {
             <BoldText as='a' href={`mailto: ${email}`} aria-label='send email'>
-              drop me a mail
+              an email
             </BoldText>
           }{' '}
-          so we can have a chat, or take a look at the links below.
+          . Not feeling chatty? Then take a look at the links below.
         </p>
         <Social>
           {Object.entries(social).map(([key, value]) => {
