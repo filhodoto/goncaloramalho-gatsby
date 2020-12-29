@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { AnimateOnChange } from 'react-animation';
 import styled from 'styled-components';
@@ -10,7 +10,7 @@ import { State } from 'state/reducer';
 import { setFeature } from 'state/actions';
 
 const MainContainer = styled.main`
-  text-align: center;
+  text-align: left;
   display: grid;
   place-items: center;
   font-size: ${pxToRem(18)};
@@ -18,6 +18,7 @@ const MainContainer = styled.main`
   line-height: 140%;
 
   ${up('sm')} {
+    text-align: center;
     font-size: ${pxToRem(24)};
     line-height: 125%;
   }
@@ -26,7 +27,10 @@ const MainContainer = styled.main`
 const ContentContainer = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
+
+  ${up('sm')} {
+    align-items: center;
+  }
 
   ${up('md')} {
     max-width: ${pxToRem(800)};
@@ -35,14 +39,16 @@ const ContentContainer = styled.div`
 
 const Heading = styled.h1`
   font-family: ${(props) => props.theme.fonts.heading};
-  line-height: 120%;
-  margin-bottom: ${pxToRem(20)};
-  font-size: 2.2em;
+  line-height: 110%;
+  margin-bottom: ${pxToRem(25)};
+  font-size: 2.8em;
   span {
     display: block;
   }
 
   ${up('md')} {
+    margin-bottom: ${pxToRem(30)};
+
     span {
       display: inline;
     }
@@ -55,8 +61,11 @@ const Features = styled.span`
 `;
 
 const Social = styled.div`
-  margin-top: ${pxToRem(50)};
+  margin-top: ${pxToRem(35)};
   display: flex;
+  ${up('md')} {
+    margin-top: ${pxToRem(50)};
+  }
 `;
 
 const BoldText = styled.p`
@@ -65,6 +74,7 @@ const BoldText = styled.p`
 
 const Main = (): JSX.Element => {
   const dispatch = useDispatch();
+  const [startAnimation, setStartAnimation] = useState(false);
   // Get features from store
   const features = useSelector<State, State['features']>(
     (state) => state.features
@@ -81,13 +91,19 @@ const Main = (): JSX.Element => {
   useEffect(() => {
     // Start features loop by incrementing featuresCounter
     const featuresLoopInterval = setInterval(() => {
+      // On the first time we are gonna change feature we set the animation to true
+      // so we can render the text with animation
+      if (!startAnimation) {
+        setStartAnimation(true);
+      }
+
       // Increment features counter so we can change the feature, if we reached the last one, start again on 0
       setFeaturesCounter((featuresCounter) =>
         featuresCounter < features.length - 1 ? featuresCounter + 1 : 0
       );
     }, 5000);
     return () => clearInterval(featuresLoopInterval);
-  }, [features.length]);
+  }, [features.length, startAnimation]);
 
   useEffect(() => {
     // Set new feature using featuresCounter as object index
@@ -96,6 +112,25 @@ const Main = (): JSX.Element => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [featuresCounter]);
 
+  const featureText = useMemo(() => {
+    // Check typeof window !== 'undefined' && AnimateOnChange to prevent gatsby build mistake
+    // Check startAnimation yo prevent first load animation
+    if (typeof window !== 'undefined' && AnimateOnChange && startAnimation) {
+      return (
+        <AnimateOnChange
+          animationIn='bounceIn'
+          animationOut='bounceOut'
+          durationOut={1000}
+        >
+          <Features>{currentFeature.feature}</Features>
+        </AnimateOnChange>
+      );
+    } else {
+      // On first load we render text without animation
+      return <Features>{currentFeature.feature}</Features>;
+    }
+  }, [currentFeature, startAnimation]);
+
   return (
     <MainContainer>
       <ContentContainer>
@@ -103,24 +138,14 @@ const Main = (): JSX.Element => {
           <span>Olá!</span> I&apos;m Gonçalo
         </Heading>
         <p>
-          I’m a{' '}
-          {typeof window !== 'undefined' && AnimateOnChange && (
-            <AnimateOnChange
-              animationIn='bounceIn'
-              animationOut='bounceOut'
-              durationOut={1000}
-            >
-              <Features>{currentFeature.feature}</Features>
-            </AnimateOnChange>
-          )}{' '}
-          who likes to craft interesting and beautiful projecs for the web. To
-          know more about me you can{' '}
+          I’m a {featureText} who likes to craft interesting and beautiful
+          projecs for the web. Want to know more? Feel free to drop me{' '}
           {
             <BoldText as='a' href={`mailto: ${email}`} aria-label='send email'>
-              drop me a mail
+              an email
             </BoldText>
           }{' '}
-          so we can have a chat, or take a look at the links below.
+          . Not feeling chatty? Then take a look at the links below.
         </p>
         <Social>
           {Object.entries(social).map(([key, value]) => {

@@ -3,6 +3,7 @@ import { normalize } from 'styled-normalize';
 import 'fontsource-source-sans-pro/400-normal.css';
 import 'fontsource-source-sans-pro/600-normal.css';
 import 'fontsource-montserrat/700-normal.css'; // All styles included.
+import { FixForFullHeight } from './sharedStyles';
 
 const GlobalStyle = createGlobalStyle`
   :root {
@@ -144,11 +145,6 @@ const GlobalStyle = createGlobalStyle`
     border-spacing: 0;
   }
 
-  body,
-  html {
-    height: 100%;
-  }
-
   body {
     * {
       box-sizing: border-box;
@@ -172,6 +168,9 @@ const GlobalStyle = createGlobalStyle`
   svg {
     transition: all ease-in-out var(--transitionDuration);
   }
+
+  ${FixForFullHeight};
+
 `;
 
 export default GlobalStyle;
