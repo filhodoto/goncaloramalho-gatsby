@@ -10,7 +10,7 @@ import { State } from 'state/reducer';
 import { setFeature } from 'state/actions';
 
 const MainContainer = styled.main`
-  text-align: center;
+  text-align: left;
   display: grid;
   place-items: center;
   font-size: ${pxToRem(18)};
@@ -18,6 +18,7 @@ const MainContainer = styled.main`
   line-height: 140%;
 
   ${up('sm')} {
+    text-align: center;
     font-size: ${pxToRem(24)};
     line-height: 125%;
   }
@@ -26,7 +27,10 @@ const MainContainer = styled.main`
 const ContentContainer = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
+
+  ${up('sm')} {
+    align-items: center;
+  }
 
   ${up('md')} {
     max-width: ${pxToRem(800)};
@@ -35,14 +39,16 @@ const ContentContainer = styled.div`
 
 const Heading = styled.h1`
   font-family: ${(props) => props.theme.fonts.heading};
-  line-height: 120%;
-  margin-bottom: ${pxToRem(20)};
-  font-size: 2.2em;
+  line-height: 110%;
+  margin-bottom: ${pxToRem(25)};
+  font-size: 2.8em;
   span {
     display: block;
   }
 
   ${up('md')} {
+    margin-bottom: ${pxToRem(30)};
+
     span {
       display: inline;
     }
@@ -55,8 +61,11 @@ const Features = styled.span`
 `;
 
 const Social = styled.div`
-  margin-top: ${pxToRem(50)};
+  margin-top: ${pxToRem(35)};
   display: flex;
+  ${up('md')} {
+    margin-top: ${pxToRem(50)};
+  }
 `;
 
 const BoldText = styled.p`

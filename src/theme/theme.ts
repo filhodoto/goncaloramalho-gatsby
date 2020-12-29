@@ -12,7 +12,7 @@ export const baseTheme: BaseTheme = {
 export const lightTheme: DefaultTheme = {
   colors: {
     bgGradient: `linear-gradient(to bottom, #f9fbff, #f0f4fd, #e6edfa, #dde6f8, #d3dff5);`,
-    primary: '#CCD6F5',
+    primary: '#cbd4f1',
     text: '#505970',
     link: '#3A445D',
     action: '#DA4167',
