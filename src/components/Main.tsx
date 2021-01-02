@@ -139,7 +139,7 @@ const Main = (): JSX.Element => {
         </Heading>
         <p>
           I’m a {featureText} who likes to craft interesting and beautiful
-          projecs for the web. Want to know more? Feel free to drop me{' '}
+          projects for the web. Want to know more? Feel free to drop me{' '}
           {
             <BoldText as='a' href={`mailto: ${email}`} aria-label='send email'>
               an email
