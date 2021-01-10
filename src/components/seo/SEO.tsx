@@ -36,6 +36,7 @@ const SEO: FC<SEOInterface> = ({
           description || data.site.siteMetadata.description;
 
         const currentTitle: string = title || data.site.siteMetadata.title;
+
         return (
           <Helmet defer={false}>
             {/* General tags */}
@@ -49,7 +50,10 @@ const SEO: FC<SEOInterface> = ({
             <meta property='og:type' content='website' />
             <meta property='og:url' content={data.site.siteMetadata.siteUrl} />
             <meta property='og:description' content={metaDescription} />
-            <meta property='og:image' content={metaImage} />
+            <meta
+              property='og:image'
+              content={`${data.site.siteMetadata.siteUrl}${metaImage}`}
+            />
 
             {/* Twitter Card tags */}
             <meta
@@ -61,7 +65,10 @@ const SEO: FC<SEOInterface> = ({
             <meta name='twitter:creator' content='@_goncalo' />
             <meta name='twitter:title' content={currentTitle} />
             <meta name='twitter:description' content={metaDescription} />
-            <meta name='twitter:image' content={metaImage} />
+            <meta
+              name='twitter:image'
+              content={`${data.site.siteMetadata.siteUrl}${metaImage}`}
+            />
 
             <html lang='en' />
           </Helmet>
