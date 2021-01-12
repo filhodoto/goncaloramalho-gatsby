@@ -87,7 +87,7 @@ const Background = (): JSX.Element => {
   return (
     <StyledContainer>
       {elements.map((item, index) => {
-        return <BgElement key={index} {...item} />;
+        return <BgElement key={`${index}-${item.position}`} {...item} />;
       })}
     </StyledContainer>
   );
