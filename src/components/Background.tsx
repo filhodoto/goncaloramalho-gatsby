@@ -93,4 +93,4 @@ const Background = (): JSX.Element => {
   );
 };
 
-export default Background;
+export default React.memo(Background);

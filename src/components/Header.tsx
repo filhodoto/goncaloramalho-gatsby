@@ -20,9 +20,7 @@ const Header: FC<{ theme: DefaultTheme }> = ({ theme }): JSX.Element => {
   );
   const dispatch = useDispatch();
 
-  const handleSwitchChange = () => {
-    dispatch(toggleTheme(!isDarkMode));
-  };
+  const handleSwitchChange = () => dispatch(toggleTheme(!isDarkMode));
 
   return (
     <HeaderStyled>

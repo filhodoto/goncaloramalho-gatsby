@@ -24,59 +24,65 @@ const shapes: string[] = [
 ];
 
 // Create a blob shape based
-const BlobShape: FC = (): JSX.Element => {
-  // Define shape by randomly getting a path from shapes array
-  const shape = randomNumber(3);
+// eslint-disable-next-line react/display-name
+const BlobShape: FC = React.memo(
+  (): JSX.Element => {
+    // Define shape by randomly getting a path from shapes array
+    const shape = randomNumber(3);
 
-  return (
-    <svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'>
-      <path d={shapes[shape]} transform='translate(100 100)' />
-    </svg>
-  );
-};
-
-// Using React.memo to prevent it from re-render and change shape when we change theme
-const MemoizedBlobShape = React.memo(BlobShape);
+    return (
+      <svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'>
+        <path d={shapes[shape]} transform='translate(100 100)' />
+      </svg>
+    );
+  }
+);
 
 // Component rendefing Feature Shapes
-const FeatureShape: FC = (): JSX.Element => {
-  const currentFeature = useSelector<State, State['currentFeature']>(
-    (state) => state.currentFeature
-  );
+// eslint-disable-next-line react/display-name
+const FeatureShape: FC = React.memo(
+  (): JSX.Element => {
+    const currentFeature = useSelector<State, State['currentFeature']>(
+      (state) => state.currentFeature
+    );
 
-  return typeof window !== 'undefined' && AnimateOnChange ? (
-    <AnimateOnChange
-      animationIn='bounceIn'
-      animationOut='bounceOut'
-      durationOut={500}
-    >
-      {(() => {
-        switch (currentFeature['icon']) {
-          case 'dish':
-            return <Cheese css={svgStyles} />;
-          case 'plane':
-            return <Plane css={svgStyles} />;
-          case 'comic':
-            return <Comic css={svgStyles} />;
-          case 'web':
-            return <Web css={svgStyles} />;
-          default:
-            return <Beer css={svgStyles} />;
-        }
-      })()}
-    </AnimateOnChange>
-  ) : (
-    <></>
-  );
-};
+    return typeof window !== 'undefined' && AnimateOnChange ? (
+      <AnimateOnChange
+        animationIn='bounceIn'
+        animationOut='bounceOut'
+        durationOut={500}
+      >
+        {(() => {
+          switch (currentFeature['icon']) {
+            case 'dish':
+              return <Cheese css={svgStyles} />;
+            case 'plane':
+              return <Plane css={svgStyles} />;
+            case 'comic':
+              return <Comic css={svgStyles} />;
+            case 'web':
+              return <Web css={svgStyles} />;
+            default:
+              return <Beer css={svgStyles} />;
+          }
+        })()}
+      </AnimateOnChange>
+    ) : (
+      <></>
+    );
+  }
+);
 
+// Because we use styled-components when we change styles (eg change theme) classNames change,
+// this means BgShape.tsx will re-render when we change theme
+// However the shapes don't need to re-render so we use React.memo to prevent that
 const BgShape: FC<{
   className?: string;
   isFeatureEl?: boolean;
 }> = (props): JSX.Element => {
   return (
     <div className={props.className}>
-      {!props.isFeatureEl ? <MemoizedBlobShape /> : <FeatureShape />}
+      {!props.isFeatureEl ? <BlobShape /> : <FeatureShape />}
     </div>
   );
 };
