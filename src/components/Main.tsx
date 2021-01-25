@@ -75,6 +75,8 @@ const BoldText = styled.p`
 const Main = (): JSX.Element => {
   const dispatch = useDispatch();
   const [startAnimation, setStartAnimation] = useState(false);
+  const [featuresCounter, setFeaturesCounter] = useState(0);
+
   // Get features from store
   const features = useSelector<State, State['features']>(
     (state) => state.features
@@ -83,7 +85,6 @@ const Main = (): JSX.Element => {
   const currentFeature = useSelector<State, State['currentFeature']>(
     (state) => state.currentFeature
   );
-  const [featuresCounter, setFeaturesCounter] = useState(0);
 
   //Note:: Using this as it's Gatsby standart but I'm not sure I like this approach for the future
   const { email, social } = useSiteMetadata();

@@ -3,7 +3,7 @@
   "private": true,
   "description": "Gonçalo Ramalho personal website",
   "author": "Gonçalo Ramalho <meet@goncaloramalho.com>",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "license": "0BSD",
   "scripts": {
     "build": "gatsby build",
