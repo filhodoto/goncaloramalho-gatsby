@@ -3,12 +3,12 @@ export const TOGGLE_DARKMODE = 'TOGGLE_DARKMODE';
 export const SET_FEATURE = 'SET_FEATURE';
 
 export interface ToggleDarkMode {
-  type: 'TOGGLE_DARKMODE';
+  type: typeof TOGGLE_DARKMODE;
   payload: boolean;
 }
 
 export interface SetFeatureMode {
-  type: 'SET_FEATURE';
+  type: typeof SET_FEATURE;
   payload: Feature;
 }
 
