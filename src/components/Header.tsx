@@ -33,6 +33,7 @@ const Header: FC<{ theme: DefaultTheme }> = ({ theme }): JSX.Element => {
         too {isDarkMode ? 'dark' : 'light'}?
       </span>
       <Switch
+        data-testid='switch'
         onChange={handleSwitchChange}
         aria-label='switch theme'
         role='checkbox'
