@@ -13,6 +13,7 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "test": "jest",
+    "test:watch": "jest --watch", 
     "preload-fonts": "gatsby-preload-fonts"
   },
   "dependencies": {
