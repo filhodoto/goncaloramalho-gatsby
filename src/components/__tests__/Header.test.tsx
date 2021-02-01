@@ -4,11 +4,10 @@ import { fireEvent } from '@testing-library/react';
 import Header from 'components/Header';
 import { DefaultTheme } from 'styled-components/macro';
 
-// Render Header for testing
-const getHeaderEl = (props?: { theme: DefaultTheme }) =>
-  render(<Header {...props} />);
-
 describe(`Header tests`, () => {
+  // Render Header for testing
+  const getHeaderEl = (props?: { theme: DefaultTheme }) =>
+    render(<Header {...props} />);
   it(`renders theme switch`, () => {
     const { getByTestId } = getHeaderEl();
     expect(getByTestId('switch')).toBeInTheDocument();

@@ -31,7 +31,7 @@ export default function Home(): JSX.Element {
         <Main />
         <Footer />
       </MainContainer>
-      <Background />
+      <Background numberOfElements={21} />
     </ThemeProvider>
   );
 }
