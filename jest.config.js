@@ -4,17 +4,7 @@ module.exports = {
   },
   moduleNameMapper: {
     '.+\\.(css|styl|less|sass|scss)$': `identity-obj-proxy`,
-    '.+\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$': `<rootDir>/tests/__mocks__/file-mock.js`,
-  },
-  testPathIgnorePatterns: [
-    `node_modules`,
-    `\\.cache`,
-    `<rootDir>.*/public`,
-    `<rootDir>.*/static`,
-    `<rootDir>.*/.history`,
-  ],
-  transformIgnorePatterns: [`node_modules/(?!(gatsby)/)`],
-  moduleNameMapper: {
+    '.+\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$': `<rootDir>/src/tests/__mocks__/file-mock.js`,
     '^src(.*)$': `<rootDir>/src$1`,
     '^components(.*)$': `<rootDir>/src/components$1`,
     '^helpers(.*)$': `<rootDir>/src/helpers$1`,
@@ -26,6 +16,14 @@ module.exports = {
     '^images(.*)$': `<rootDir>/src/images$1`,
     '^tests(.*)$': `<rootDir>/src/tests$1`,
   },
+  testPathIgnorePatterns: [
+    `node_modules`,
+    `\\.cache`,
+    `<rootDir>.*/public`,
+    `<rootDir>.*/static`,
+    `<rootDir>.*/.history`,
+  ],
+  transformIgnorePatterns: [`node_modules/(?!(gatsby)/)`],
   globals: {
     __PATH_PREFIX__: ``,
   },
