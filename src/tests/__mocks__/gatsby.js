@@ -23,5 +23,17 @@ module.exports = {
       })
   ),
   StaticQuery: jest.fn(),
-  useStaticQuery: jest.fn(),
+  useStaticQuery: jest.fn().mockReturnValue({
+    site: {
+      siteMetadata: {
+        email: 'mock@email.com',
+        social: {
+          linkedin: 'mock-linkedin',
+          github: 'mock-github',
+          twitter: 'mock-twitter',
+          instagram: 'mock-instagram',
+        },
+      },
+    },
+  }),
 };
