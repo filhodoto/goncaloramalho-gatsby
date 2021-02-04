@@ -25,6 +25,7 @@ const Header: FC<{ theme: DefaultTheme }> = ({ theme }): JSX.Element => {
   return (
     <HeaderStyled>
       <span
+        data-testid='switch-label'
         css={`
           margin-right: ${pxToRem(10)};
           font-size: ${pxToRem(13)};
@@ -33,6 +34,7 @@ const Header: FC<{ theme: DefaultTheme }> = ({ theme }): JSX.Element => {
         too {isDarkMode ? 'dark' : 'light'}?
       </span>
       <Switch
+        data-testid='switch'
         onChange={handleSwitchChange}
         aria-label='switch theme'
         role='checkbox'

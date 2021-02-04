@@ -55,15 +55,15 @@ const FeatureShape: FC = React.memo(
         {(() => {
           switch (currentFeature['icon']) {
             case 'dish':
-              return <Cheese css={svgStyles} />;
+              return <Cheese data-testid='dish' css={svgStyles} />;
             case 'plane':
-              return <Plane css={svgStyles} />;
+              return <Plane data-testid='plane' css={svgStyles} />;
             case 'comic':
-              return <Comic css={svgStyles} />;
+              return <Comic data-testid='comic' css={svgStyles} />;
             case 'web':
-              return <Web css={svgStyles} />;
+              return <Web data-testid='web' css={svgStyles} />;
             default:
-              return <Beer css={svgStyles} />;
+              return <Beer data-testid='beer' css={svgStyles} />;
           }
         })()}
       </AnimateOnChange>
@@ -81,7 +81,10 @@ const BgShape: FC<{
   isFeatureEl?: boolean;
 }> = (props): JSX.Element => {
   return (
-    <div className={props.className}>
+    <div
+      className={props.className}
+      data-testid={props.isFeatureEl ? 'bg-element-feature' : 'bg-element'}
+    >
       {!props.isFeatureEl ? <BlobShape /> : <FeatureShape />}
     </div>
   );

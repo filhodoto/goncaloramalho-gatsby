@@ -4,15 +4,27 @@
 
 Project for my personal website built with [Gatsby](https://www.gatsbyjs.com/).
 
-### Development
+## Development
 
-Inside project folder run
+Inside project folder:
+
+### Development
 
 ```
 gatsby develop
 ```
 
-### Build
+### Run Unit Tests
+
+```
+// run tests once
+npm test
+
+// run tests in watch mode
+npm run test:watch
+```
+
+## Build
 
 To build project and see it on localhost run both script one at a time
 

@@ -15,7 +15,6 @@ const MainContainer = styled.div`
   display: grid;
   grid-template-rows: auto 1fr auto;
   padding: ${pxToRem(20)};
-  /* min-height: 100vh; */
   height: 100%;
 `;
 
@@ -32,7 +31,7 @@ export default function Home(): JSX.Element {
         <Main />
         <Footer />
       </MainContainer>
-      <Background />
+      <Background numberOfElements={21} />
     </ThemeProvider>
   );
 }
