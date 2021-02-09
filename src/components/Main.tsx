@@ -123,12 +123,16 @@ const Main = (): JSX.Element => {
           animationOut='bounceOut'
           durationOut={1000}
         >
-          <Features>{currentFeature.feature}</Features>
+          <Features data-testid='feature-text-animate'>
+            {currentFeature.feature}
+          </Features>
         </AnimateOnChange>
       );
     } else {
       // On first load we render text without animation
-      return <Features>{currentFeature.feature}</Features>;
+      return (
+        <Features data-testid='feature-text'>{currentFeature.feature}</Features>
+      );
     }
   }, [currentFeature, startAnimation]);
 

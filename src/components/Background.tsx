@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import styled, { Keyframes } from 'styled-components/macro';
 import { pxToRem, randomNumber } from 'helpers/generic';
 import { animateUp, animateUpAndRotate } from 'helpers/animations';
@@ -57,8 +57,9 @@ const setPositionRange = (
 
 // Create object with css styles for each bg element created
 const createBgEl = (index: number, numberOfElements: number) => {
-  // If it's multiple of 4 it means it's an svg with a feature, those have different values
-  const isFeatureEl = index % 3 === 0;
+  // If it's multiple of 3 it means it's an svg with a feature, those have different values
+  // Add + 1 so we remove index 0 which will always return true
+  const isFeatureEl = (index + 1) % 3 === 0;
   const positionRange = setPositionRange(index, numberOfElements);
   return {
     size: pxToRem(randomNumber(isFeatureEl ? 60 : 100, isFeatureEl ? 30 : 20)),
@@ -70,8 +71,11 @@ const createBgEl = (index: number, numberOfElements: number) => {
   };
 };
 
-const Background = (): JSX.Element => {
-  const numberOfElements = 21;
+export interface BackgroundProps {
+  numberOfElements: number;
+}
+
+const Background: FC<BackgroundProps> = ({ numberOfElements }): JSX.Element => {
   const [elements, setElements] = useState<BgElementProps[]>([]);
 
   // Create bg Elements
@@ -82,7 +86,7 @@ const Background = (): JSX.Element => {
         createBgEl(index, numberOfElements),
       ]);
     }
-  }, []);
+  }, [numberOfElements]);
 
   return (
     <StyledContainer>
