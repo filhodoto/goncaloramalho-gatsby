@@ -19,9 +19,9 @@ export interface State {
 export const initialState: State = {
   darkmode: true,
   features: [
-    { feature: 'Web developer', icon: 'web' },
+    { feature: 'Developer', icon: 'web' },
     { feature: 'Backpacker', icon: 'plane' },
-    { feature: 'Beer drinker', icon: 'beer' },
+    { feature: 'Beer enthusiast', icon: 'beer' },
     { feature: 'Comics reader', icon: 'comic' },
     { feature: 'Cheese addict', icon: 'dish' },
   ],
