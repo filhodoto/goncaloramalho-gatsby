@@ -31,7 +31,7 @@ const Header: FC<{ theme: DefaultTheme }> = ({ theme }): JSX.Element => {
           font-size: ${pxToRem(13)};
         `}
       >
-        too {isDarkMode ? 'dark' : 'light'}?
+        too {isDarkMode ? 'dark' : 'bright'}?
       </span>
       <Switch
         data-testid='switch'

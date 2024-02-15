@@ -32,6 +32,6 @@ describe(`Header tests`, () => {
     fireEvent.click(switchEl);
 
     // Check if tesy changed to light more
-    expect(switchLabel.textContent).toBe('too light?');
+    expect(switchLabel.textContent).toBe('too bright?');
   });
 });
