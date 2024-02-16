@@ -1,8 +1,11 @@
 import { DefaultTheme } from 'styled-components/macro';
-import { BaseTheme } from './themes';
+import { createStyledBreakpointsTheme } from 'styled-breakpoints';
+
+export const breakpointsTheme = createStyledBreakpointsTheme();
 
 // Define baseTheme for definitions that will be shared between themes
-export const baseTheme: BaseTheme = {
+export const baseTheme = {
+  ...breakpointsTheme,
   fonts: {
     body: 'Source Sans Pro',
     heading: 'Montserrat',
@@ -17,7 +20,7 @@ export const lightTheme: DefaultTheme = {
     link: '#3A445D',
     action: '#DA4167',
   },
-  fonts: { ...baseTheme.fonts },
+  ...baseTheme,
 };
 
 export const darkTheme: DefaultTheme = {
@@ -28,7 +31,7 @@ export const darkTheme: DefaultTheme = {
     link: '#8eadb9  ',
     action: '#3C546D',
   },
-  fonts: { ...baseTheme.fonts },
+  ...baseTheme,
 };
 
 // Use Record so we can use typed maps and prevent error:

@@ -1,8 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { AnimateOnChange } from 'react-animation';
-import styled from 'styled-components';
-import { up } from 'styled-breakpoints';
+import styled from 'styled-components/macro';
 import { pxToRem } from 'helpers/generic';
 import SocialLinks from 'components/ui/SocialLinks';
 import { useSiteMetadata } from 'api/global';
@@ -17,7 +16,7 @@ const MainContainer = styled.main`
   letter-spacing: 0.02rem;
   line-height: 140%;
 
-  ${up('sm')} {
+  ${({ theme }) => theme.breakpoints.up('sm')} {
     text-align: center;
     font-size: ${pxToRem(24)};
     line-height: 125%;
@@ -28,11 +27,11 @@ const ContentContainer = styled.div`
   display: flex;
   flex-direction: column;
 
-  ${up('sm')} {
+  ${({ theme }) => theme.breakpoints.up('sm')} {
     align-items: center;
   }
 
-  ${up('md')} {
+  ${({ theme }) => theme.breakpoints.up('md')} {
     max-width: ${pxToRem(800)};
   }
 `;
@@ -46,7 +45,7 @@ const Heading = styled.h1`
     display: block;
   }
 
-  ${up('md')} {
+  ${({ theme }) => theme.breakpoints.up('md')} {
     margin-bottom: ${pxToRem(30)};
 
     span {
@@ -63,7 +62,7 @@ const Features = styled.span`
 const Social = styled.div`
   margin-top: ${pxToRem(35)};
   display: flex;
-  ${up('md')} {
+  ${({ theme }) => theme.breakpoints.up('md')} {
     margin-top: ${pxToRem(50)};
   }
 `;

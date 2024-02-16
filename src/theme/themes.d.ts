@@ -1,4 +1,5 @@
 import { CSSObject, CSSProp } from 'styled-components/macro';
+import { baseTheme } from './theme';
 
 // Fix for Typescript issue with css prop
 declare module 'react' {
@@ -6,17 +7,11 @@ declare module 'react' {
     css?: CSSProp | CSSObject;
   }
 }
-// Define BaseTheme interface, we define this in this file instead of adding it to 'styled-components' like DefaultTheme
-export interface BaseTheme {
-  fonts: {
-    body: string;
-    heading: string;
-  };
-}
+type BaseTheme = typeof baseTheme;
 
 // Add style declaratuib to 'styled-components/macro' DefaultTheme
 declare module 'styled-components/macro' {
-  export interface DefaultTheme {
+  export interface DefaultTheme extends BaseTheme {
     colors: {
       bgGradient: string;
       primary: string;
@@ -24,6 +19,5 @@ declare module 'styled-components/macro' {
       link: string;
       action: string;
     };
-    fonts: BaseTheme['fonts'];
   }
 }
