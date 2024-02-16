@@ -64,6 +64,7 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^26.6.3",
     "prettier": "2.1.2",
+    "react-animation": "^1.2.2",
     "styled-breakpoints": "^14.0.0",
     "styled-normalize": "^8.1.1"
   },
