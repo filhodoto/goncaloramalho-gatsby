@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { AnimateOnChange } from 'react-animation';
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 import { pxToRem } from 'helpers/generic';
 import SocialLinks from 'components/ui/SocialLinks';
 import { useSiteMetadata } from 'api/global';

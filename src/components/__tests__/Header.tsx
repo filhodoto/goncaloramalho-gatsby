@@ -2,7 +2,7 @@ import * as React from 'react';
 import { render } from 'tests/test-utils';
 import { fireEvent } from '@testing-library/react';
 import Header from 'components/Header';
-import { DefaultTheme } from 'styled-components/macro';
+import { DefaultTheme } from 'styled-components';
 
 describe(`Header tests`, () => {
   // Render Header for testing

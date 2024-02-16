@@ -1,4 +1,4 @@
-import { DefaultTheme } from 'styled-components/macro';
+import { DefaultTheme } from 'styled-components';
 import { createStyledBreakpointsTheme } from 'styled-breakpoints';
 
 export const breakpointsTheme = createStyledBreakpointsTheme();
