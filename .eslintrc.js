@@ -25,7 +25,7 @@ module.exports = {
       jsx: true,
     },
     // Allows for the parsing of modern ECMAScript features
-    ecmaVersion: 2018,
+    ecmaVersion: 2023,
     // Allows for the use of imports
     sourceType: 'module',
   },
@@ -43,5 +43,7 @@ module.exports = {
     '@typescript-eslint/ban-ts-ignore': 'off',
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
+    'no-anonymous-exports-page-templates': 'warn',
+    'limited-exports-page-templates': 'warn',
   },
 };
