@@ -43,6 +43,7 @@ module.exports = {
     '@typescript-eslint/ban-ts-ignore': 'off',
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
+    // Gatsby's required rules
     'no-anonymous-exports-page-templates': 'warn',
     'limited-exports-page-templates': 'warn',
   },

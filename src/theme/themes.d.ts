@@ -7,9 +7,10 @@ declare module 'react' {
     css?: CSSProp | CSSObject;
   }
 }
+
 type BaseTheme = typeof baseTheme;
 
-// Add style declaratuib to 'styled-components' DefaultTheme
+// Add style declarations to 'styled-components' DefaultTheme
 declare module 'styled-components' {
   export interface DefaultTheme extends BaseTheme {
     colors: {
