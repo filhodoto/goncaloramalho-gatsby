@@ -22,11 +22,13 @@ module.exports = {
   siteMetadata: {
     title: 'Gonçalo Ramalho - Web Developer',
     description:
-      'Hi there! I’m Gonçalo, a web enthusiast who likes to craft interesting and beautiful projecs for the web.',
+      'Hi there! I’m Gonçalo, a web enthusiast who likes to craft interesting and beautiful projetcs for the web.',
     author: 'Gonçalo Ramalho',
     email: 'meet@goncaloramalho.com',
     siteUrl: 'https://www.goncaloramalho.com',
     keywords: [
+      'developer',
+      'software developer',
       'web developer',
       'web design',
       'web Development',
@@ -56,6 +58,18 @@ module.exports = {
         rule: {
           include: path.join(__dirname, 'src/images/svg/'),
         },
+      },
+    },
+    /* TODO:: This configuration is not working for the preload-cache-json file. 
+    When we run "npm run preload-fonts" the file is created without assets , I've written the file with the paths 
+    the fonts manually for the current file */
+    {
+      resolve: `gatsby-plugin-preload-fonts`,
+      options: {
+        crossOrigin: `use-credentials`,
+        // OR
+        crossOrigin: (pathname) =>
+          pathname.match(/^\/elevated/) ? `use-credentials` : `anonymous`,
       },
     },
     {
