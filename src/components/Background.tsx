@@ -1,5 +1,6 @@
 import React, { FC, useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { Keyframes } from 'styled-components/dist/types';
 import { pxToRem, randomNumber } from 'helpers/generic';
 import { animateUp, animateUpAndRotate } from 'helpers/animations';
 import BgShape from 'components/ui/BgShape';
@@ -17,7 +18,7 @@ const StyledContainer = styled.div`
 interface BgElementProps {
   size: string;
   position: string;
-  animationName: string;
+  animationName: Keyframes;
   delay: string;
   duration: string;
   isFeatureEl: boolean;

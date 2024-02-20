@@ -17,7 +17,7 @@
     "preload-fonts": "gatsby-preload-fonts"
   },
   "dependencies": {
-    "@fontsource-variable/montserrat": "^5.0.17",
+    "@fontsource/montserrat": "^5.0.16",
     "@fontsource/source-sans-pro": "^5.0.8",
     "babel-plugin-styled-components": "^2.1.4",
     "gatsby": "^5.13.3",

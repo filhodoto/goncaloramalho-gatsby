@@ -38,6 +38,7 @@ const ContentContainer = styled.div`
 
 const Heading = styled.h1`
   font-family: ${(props) => props.theme.fonts.heading};
+  font-weight: 700;
   line-height: 110%;
   margin-bottom: ${pxToRem(25)};
   font-size: 2.8em;
@@ -57,6 +58,7 @@ const Heading = styled.h1`
 const Features = styled.span`
   font-family: ${(props) => props.theme.fonts.heading};
   font-size: 1.5em;
+  font-weight: 700;
 `;
 
 const Social = styled.div`
@@ -85,7 +87,7 @@ const Main = (): JSX.Element => {
     (state) => state.currentFeature
   );
 
-  //Note:: Using this as it's Gatsby standart but I'm not sure I like this approach for the future
+  //Note:: Using this as it's Gatsby standard but I'm not sure I like this approach for the future
   const { email, social } = useSiteMetadata();
 
   useEffect(() => {
