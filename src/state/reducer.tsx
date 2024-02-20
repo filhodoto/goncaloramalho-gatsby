@@ -16,16 +16,18 @@ export interface State {
   features: Feature[];
 }
 
+const features: Feature[] = [
+  { feature: 'Developer', icon: 'web' },
+  { feature: 'Backpacker', icon: 'plane' },
+  { feature: 'Beer enthusiast', icon: 'beer' },
+  { feature: 'Comics reader', icon: 'comic' },
+  { feature: 'Cheese addict', icon: 'dish' },
+];
+
 export const initialState: State = {
   darkmode: true,
-  features: [
-    { feature: 'Developer', icon: 'web' },
-    { feature: 'Backpacker', icon: 'plane' },
-    { feature: 'Beer enthusiast', icon: 'beer' },
-    { feature: 'Comics reader', icon: 'comic' },
-    { feature: 'Cheese addict', icon: 'dish' },
-  ],
-  currentFeature: { feature: 'Web developer', icon: 'web' },
+  features,
+  currentFeature: features[0],
 };
 
 const appReducer = (
