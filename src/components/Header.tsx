@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import styled, { withTheme } from 'styled-components';
-import { DefaultTheme } from 'styled-components/macro';
+import { DefaultTheme } from 'styled-components';
 import { pxToRem } from 'helpers/generic';
 import Switch from 'react-switch';
 import { toggleTheme } from 'state/actions';
@@ -31,7 +31,7 @@ const Header: FC<{ theme: DefaultTheme }> = ({ theme }): JSX.Element => {
           font-size: ${pxToRem(13)};
         `}
       >
-        too {isDarkMode ? 'dark' : 'light'}?
+        too {isDarkMode ? 'dark' : 'bright'}?
       </span>
       <Switch
         data-testid='switch'

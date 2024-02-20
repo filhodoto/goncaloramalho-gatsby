@@ -1,8 +1,8 @@
 import { createGlobalStyle } from 'styled-components';
 import { normalize } from 'styled-normalize';
-import 'fontsource-source-sans-pro/400-normal.css';
-import 'fontsource-source-sans-pro/600-normal.css';
-import 'fontsource-montserrat/700-normal.css'; // All styles included.
+import '@fontsource/source-sans-pro/400.css';
+import '@fontsource/source-sans-pro/600.css';
+import '@fontsource/montserrat/700.css';
 import { FixForFullHeight } from './sharedStyles';
 
 const GlobalStyle = createGlobalStyle`

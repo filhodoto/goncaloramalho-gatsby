@@ -5,16 +5,30 @@
  */
 const path = require('path');
 
+// Get paths of Gatsby's required rules, which as of writing is located at:
+// https://github.com/gatsbyjs/gatsby/tree/fbfe3f63dec23d279a27b54b4057dd611dce74bb/packages/
+// gatsby/src/utils/eslint-rules
+const gatsbyRequiredRules = path.join(
+  process.cwd(),
+  'node_modules',
+  'gatsby',
+  'dist',
+  'utils',
+  'eslint-rules'
+);
+
 module.exports = {
   /* Your site config here */
   siteMetadata: {
     title: 'Gonçalo Ramalho - Web Developer',
     description:
-      'Hi there! I’m Gonçalo, a web enthusiast who likes to craft interesting and beautiful projecs for the web.',
+      'Hi there! I’m Gonçalo, a web enthusiast who likes to craft interesting and beautiful projetcs for the web.',
     author: 'Gonçalo Ramalho',
     email: 'meet@goncaloramalho.com',
     siteUrl: 'https://www.goncaloramalho.com',
     keywords: [
+      'developer',
+      'software developer',
       'web developer',
       'web design',
       'web Development',
@@ -46,12 +60,28 @@ module.exports = {
         },
       },
     },
+    /* TODO:: This configuration is not working for the preload-cache-json file. 
+    When we run "npm run preload-fonts" the file is created without assets , I've written the file with the paths 
+    the fonts manually for the current file */
+    {
+      resolve: `gatsby-plugin-preload-fonts`,
+      options: {
+        crossOrigin: `use-credentials`,
+        // OR
+        crossOrigin: (pathname) =>
+          pathname.match(/^\/elevated/) ? `use-credentials` : `anonymous`,
+      },
+    },
     {
       resolve: 'gatsby-plugin-eslint',
       options: {
+        // Gatsby required rules directory
+        rulePaths: [gatsbyRequiredRules],
         test: /\.js$|\.jsx$|\.ts$|\.tsx$/,
-        exclude: /(node_modules|.cache|public)/,
+        // Default settings that may be omitted or customized
         stages: ['develop'],
+        extensions: ['js', 'jsx', 'ts', 'tsx'],
+        exclude: ['node_modules', 'bower_components', '.cache', 'public'],
         options: {
           emitWarning: true,
           failOnError: false,

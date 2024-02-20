@@ -39,3 +39,8 @@ gatsby serve
 ## Deploy
 
 Deployment is done automatically with [Vercel](https://vercel.com) once we push for master branch
+
+## Optimizations
+
+- [ ] Replace deprecated [react-animation](https://github.com/nearform/react-animation#readme) package
+- [ ] Replace switch package

@@ -1,5 +1,6 @@
 import React, { FC, useEffect, useState } from 'react';
-import styled, { Keyframes } from 'styled-components/macro';
+import styled from 'styled-components';
+import { Keyframes } from 'styled-components/dist/types';
 import { pxToRem, randomNumber } from 'helpers/generic';
 import { animateUp, animateUpAndRotate } from 'helpers/animations';
 import BgShape from 'components/ui/BgShape';
