@@ -2,6 +2,7 @@ module.exports = {
   transform: {
     '^.+\\.[jt]sx?$': `<rootDir>/src/tests/jest-preprocess.js`,
   },
+  testEnvironment: 'jsdom',
   moduleNameMapper: {
     '.+\\.(css|styl|less|sass|scss)$': `identity-obj-proxy`,
     '.+\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$': `<rootDir>/src/tests/__mocks__/file-mock.js`,
@@ -23,7 +24,9 @@ module.exports = {
     `<rootDir>.*/static`,
     `<rootDir>.*/.history`,
   ],
-  transformIgnorePatterns: [`node_modules/(?!(gatsby)/)`],
+  transformIgnorePatterns: [
+    `node_modules/(?!(gatsby|gatsby-script|gatsby-link)/)`,
+  ],
   globals: {
     __PATH_PREFIX__: ``,
   },

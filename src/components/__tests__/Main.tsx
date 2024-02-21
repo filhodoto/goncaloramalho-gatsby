@@ -24,7 +24,6 @@ describe(`Main tests`, () => {
   });
 
   it(`should render feature-text WITH animation after first render`, async () => {
-    jest.setTimeout(6000);
     const { getByTestId } = getMainEl();
 
     await waitFor(
@@ -33,5 +32,5 @@ describe(`Main tests`, () => {
       },
       { timeout: 5500 }
     );
-  });
+  }, 6000);
 });
