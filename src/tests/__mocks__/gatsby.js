@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const React = require('react');
 const gatsby = jest.requireActual('gatsby');
 module.exports = {
